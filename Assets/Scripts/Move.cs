@@ -4,33 +4,25 @@ using UnityEngine;
 
 public class Move : MonoBehaviour {
     public float speed;
-    private Animator anim;
     public Transform armParent;
+    private Animator anim;
+    private Collider holding;
 
-    void Start()
-    {
+    void Start() {
         anim = armParent.GetComponent<Animator>();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            anim.SetBool("CaughtItem", !anim.GetBool("CaughtItem"));
+    void Update() {
+        if (holding != null && anim.GetCurrentAnimatorStateInfo(0).IsName("UnRotate")) {
+            holding.transform.parent = null;
+            holding = null;
         }
     }
 
-    void OnTriggerStay(Collider other) {
-        // this.transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(180, 0, 0), Time.deltaTime * speed);
+    private void OnTriggerEnter(Collider col) {
+        if (col.transform.tag.Equals("ConveyAble")) {
+            holding = col;
 
-        // other.transform.rotation = this.transform.rotation;
-    }
-
-    private void OnTriggerEnter(Collider col)
-    {
-        Debug.Log("FIRING!!");
-        if (col.transform.tag.Equals("ConveyAble"))
-        {
             col.transform.parent = gameObject.transform;
             anim.SetBool("CaughtItem", true);
         }
