@@ -8,6 +8,8 @@ public class Convey : MonoBehaviour {
     public float speed;
 
     void OnTriggerStay(Collider other) {
-        other.transform.position = Vector3.MoveTowards(other.transform.position, endpoint.position, speed * Time.deltaTime);
+        if (other.GetComponent<Conveyable>() != null) {
+            other.transform.position = Vector3.MoveTowards(other.transform.position, endpoint.position, speed * Time.deltaTime);
+        }
     }
 }
