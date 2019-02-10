@@ -13,7 +13,8 @@ public class Move : MonoBehaviour {
     }
 
     void Update() {
-        if (holding != null && anim.GetCurrentAnimatorStateInfo(0).IsName("UnRotate")) {
+        if (holding != null && anim.GetCurrentAnimatorStateInfo(0).IsName("ArmRotated")) {
+            anim.SetBool("CaughtItem", false);
             holding.transform.parent = null;
             holding = null;
         }
