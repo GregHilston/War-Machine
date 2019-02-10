@@ -24,7 +24,7 @@ public class Move : MonoBehaviour {
         if (col.transform.tag.Equals("ConveyAble")) {
             holding = col;
 
-            col.transform.parent = gameObject.transform;
+            col.transform.SetParent(gameObject.transform, true);
             anim.SetBool("CaughtItem", true);
         }
     }
