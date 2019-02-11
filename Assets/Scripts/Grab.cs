@@ -21,7 +21,7 @@ public class Grab : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider col) {
-        if (col.GetComponent<Conveyable>() != null) {
+        if (col.GetComponent<Grabbable>() != null) {
             holding = col;
 
             col.transform.SetParent(gameObject.transform, true);
