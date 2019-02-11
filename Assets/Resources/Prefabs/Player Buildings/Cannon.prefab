@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1124198442318683791
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8329564889226761838}
-  m_Layer: 0
-  m_Name: LaunchPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8329564889226761838
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1124198442318683791}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.114, y: 0.416, z: -0.782}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1223070101949860707}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1223070101807690766
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +32,7 @@ Transform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 1223070101949860707}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1223070101807690762
 MeshFilter:
@@ -134,8 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c4cb133f57de947bc64d7a8abd3467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchPoint: {fileID: 1124198442318683791}
-  Barrel: {fileID: 1223070102216430130}
+  barrel: {fileID: 1223070102216430130}
   thrust: 350
 --- !u!1 &1223070101949860706
 GameObject:
@@ -164,7 +133,6 @@ Transform:
   m_LocalPosition: {x: 9.784, y: 0.18, z: 1.402}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8329564889226761838}
   - {fileID: 1223070102216430131}
   - {fileID: 1223070101807690767}
   m_Father: {fileID: 0}
@@ -201,7 +169,7 @@ Transform:
   m_LocalScale: {x: 0.30000004, y: 0.30000004, z: 0.30000004}
   m_Children: []
   m_Father: {fileID: 1223070101949860707}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
 --- !u!33 &1223070102216430126
 MeshFilter:
@@ -256,7 +224,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223070102216430130}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
