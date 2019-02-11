@@ -10,7 +10,7 @@ public class Launcher : MonoBehaviour {
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.GetComponent<Launchable>() != null) {
             if (launchPoint != null) {
-                collision.gameObject.transform.position = launchPoint.transform.position;
+                collision.gameObject.transform.position = Barrel.transform.position;
                 collision.gameObject.transform.rotation = Barrel.transform.rotation;
 
                 collision.gameObject.GetComponent<Rigidbody>().AddForce(Barrel.transform.up * thrust);
