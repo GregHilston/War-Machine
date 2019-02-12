@@ -468,9 +468,11 @@ GameObject:
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
   - component: {fileID: 534669906}
+  - component: {fileID: 534669907}
+  - component: {fileID: 534669908}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -554,7 +556,33 @@ MonoBehaviour:
   mainSpeed: 10
   shiftAdd: 25
   maxShift: 100
-  camSens: 0.15
+--- !u!114 &534669907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92944933cef8e4274b4aa4e8de1ac170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainSpeed: 10
+  shiftAdd: 25
+  maxShift: 100
+--- !u!114 &534669908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf1224c4724a7453db0fd48e9a3891f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   minFov: 15
   maxFov: 90
   sensitivity: 10
