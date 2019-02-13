@@ -12,6 +12,6 @@ public class Spawner : MonoBehaviour {
     }
 
     void CreateObject() {
-        Instantiate(objectToSpawn, transform.position, transform.rotation);
+        SimplePool.Spawn(objectToSpawn, transform.position, transform.rotation);
     }
 }
