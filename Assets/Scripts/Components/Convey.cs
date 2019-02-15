@@ -8,7 +8,7 @@ public class Convey : MonoBehaviour {
 
     void OnCollisionStay(Collision collision) {
         if (collision.gameObject.GetComponent<Conveyable>() != null) {
-            collision.gameObject.transform.position = Vector3.MoveTowards(collision.gameObject.transform.position, endpoint.position, speed * Time.deltaTime);
+            collision.gameObject.GetComponent<Conveyable>().convey(this.endpoint.gameObject, speed);
         }
     }
 
