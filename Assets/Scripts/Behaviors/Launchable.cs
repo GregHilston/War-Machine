@@ -3,4 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Launchable : MonoBehaviour {
+    public void launch(Vector3 force) { 
+        this.GetComponent<Rigidbody>().AddForce(force);
+    }
 }
