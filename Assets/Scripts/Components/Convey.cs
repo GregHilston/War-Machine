@@ -7,8 +7,10 @@ public class Convey : MonoBehaviour {
     public float speed;
 
     void OnCollisionStay(Collision collision) {
-        if (collision.gameObject.GetComponent<Conveyable>() != null) {
-            collision.gameObject.GetComponent<Conveyable>().convey(this.endpoint.gameObject, speed);
+        var coveyable = collision.gameObject.GetComponent<Conveyable>();
+
+        if (coveyable) {
+            coveyable.convey(this.endpoint.gameObject, speed);
         }
     }
 
