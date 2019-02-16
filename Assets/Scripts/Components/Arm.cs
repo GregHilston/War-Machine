@@ -10,19 +10,19 @@ public class Arm : MonoBehaviour {
     [SerializeField]
     [Tooltip("Reference to the parent empty game object, so this arm can control animations for all the child objects.")]
     private Transform armParent;
-    private Animator anim;
+    private Animator animator;
     private Collider holding;
 
     void Start() {
         var animator = armParent.GetComponent<Animator>();
         if (animator != null) {
-            this.anim = animator;
+            this.animator = animator;
         }
     }
 
     void Update() {
-        if (holding != null && anim.GetCurrentAnimatorStateInfo(0).IsName("ArmRotated")) {
-            anim.SetBool("CaughtItem", false);
+        if (holding != null && animator.GetCurrentAnimatorStateInfo(0).IsName("ArmRotated")) {
+            animator.SetBool("CaughtItem", false);
             holding.transform.parent = null;
             holding = null;
         }
@@ -34,7 +34,7 @@ public class Arm : MonoBehaviour {
             holding = col;
 
             col.transform.SetParent(gameObject.transform, true);
-            anim.SetBool("CaughtItem", true);
+            animator.SetBool("CaughtItem", true);
         }
     }
 }
