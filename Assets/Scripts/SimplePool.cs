@@ -83,7 +83,7 @@ public static class SimplePool {
                 obj.AddComponent<PoolMember>().myPool = this;
             }
             else {
-                // Grab the last object in the inactive array
+                // Arm the last object in the inactive array
                 obj = inactive.Pop();
 
                 if(obj == null) {

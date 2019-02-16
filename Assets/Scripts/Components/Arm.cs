@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grab : MonoBehaviour {
+public class Arm : MonoBehaviour {
     public float speed;
     public Transform armParent;
     private Animator anim;
@@ -21,7 +21,7 @@ public class Grab : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider col) {
-        if (col.GetComponent<Grabbable>() != null) {
+        if (col.GetComponent<Armable>() != null) {
             holding = col;
 
             col.transform.SetParent(gameObject.transform, true);
