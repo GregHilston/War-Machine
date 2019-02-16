@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Conveyor : MonoBehaviour {
-    public Transform endpoint;
-    public float speed;
+    [SerializeField]
+    [Tooltip("Where we should send the object to. Generally the point is past the Conveyor's point, so we don't stop moving on this GameObject.")]
+    private Transform endpoint;
+    [SerializeField]
+    [Tooltip("How fast to move to the endpoint.")]
+    private float speed;
 
     void OnCollisionStay(Collision collision) {
         var coveyable = collision.gameObject.GetComponent<Conveyable>();

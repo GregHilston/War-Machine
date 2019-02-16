@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Teleporter : MonoBehaviour {
-    public GameObject location;
-    public float processTime = 0.0f;
+    [SerializeField]
+    [Tooltip("Where Teleporter should teleport the collided object to.")]
+    private GameObject location;
+    [SerializeField]
+    [Tooltip("How long Teleporter should take to telport the collided object to.")]
+    private float processTime = 0.0f;
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.GetComponent<Teleportable>() != null) {

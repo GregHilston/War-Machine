@@ -8,10 +8,15 @@ using UnityEngine;
 /// Based On: https://gist.github.com/RyanBreaker/932dc35302787d2f39df6b614a50c0c9 
 /// </summary>
 public class ZoomController : MonoBehaviour {
-    // For zooming in and out with scroll wheel
-    public float minFov = 15f;
-    public float maxFov = 90f;
-    public float sensitivity = 10f;
+    [SerializeField]
+    [Tooltip("The minimum field of field the ZoomController should allow.")]
+    private float minFov = 15f;
+    [SerializeField]
+    [Tooltip("The maximum field of field the ZoomController should allow.")]
+    private float maxFov = 90f;
+    [SerializeField]
+    [Tooltip("How sensitive ZoomController should be to zooming.")]
+    private float sensitivity = 10f;
     
     void Update() {
         // Handle zooming in and out

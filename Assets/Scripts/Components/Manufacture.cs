@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Manufacture : MonoBehaviour {
-    public GameObject input;
-    public GameObject output;
-    public GameObject outputStage;
-    public float processTime = 1.0f;
+    [SerializeField]
+    [Tooltip("What type of objects this Manufacture takes as input")]
+    private GameObject input;
+    [SerializeField]
+    [Tooltip("What type of objects this Manufacture creates as output")]
+    private GameObject output;
+    [SerializeField]
+    [Tooltip("Where this Manufacture should place its output")]
+    private GameObject outputStage;
+    [SerializeField]
+    [Tooltip("How long it should take to Manufacture")]
+    private float processTime = 0.0f;
 
     private void OnCollisionEnter(Collision collision) {
         var manufactureable = collision.gameObject.GetComponent<Manufactureable>();

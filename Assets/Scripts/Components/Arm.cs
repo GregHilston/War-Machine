@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class Arm : MonoBehaviour {
-    public float speed;
-    public Transform armParent;
+    [SerializeField]
+    [Tooltip("Reference to the parent empty game object, so this arm can control animations for all the child objects.")]
+    private Transform armParent;
     private Animator anim;
     private Collider holding;
 
     void Start() {
-        anim = armParent.GetComponent<Animator>();
+        var animator = armParent.GetComponent<Animator>();
+        if (animator != null) {
+            this.anim = animator;
+        }
     }
 
     void Update() {
@@ -21,7 +26,8 @@ public class Arm : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider col) {
-        if (col.GetComponent<Armable>() != null) {
+        var armable = col.GetComponent<Armable>();
+        if (armable != null) {
             holding = col;
 
             col.transform.SetParent(gameObject.transform, true);

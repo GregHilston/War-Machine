@@ -7,10 +7,16 @@ using UnityEngine;
 /// 
 /// Based On: https://gist.github.com/RyanBreaker/932dc35302787d2f39df6b614a50c0c9 
 /// </summary>
-public class RotationController : MonoBehaviour { 
-    public float mainSpeed = 10.0f;   // Regular speed
-    public float shiftAdd = 25.0f;   // Amount to accelerate when shift is pressed
-    public float maxShift = 100.0f;  // Maximum speed when holding shift
+public class RotationController : MonoBehaviour {
+    [SerializeField]
+    [Tooltip("Regular speed to move rotation.")]
+    private float mainSpeed = 10.0f;
+    [SerializeField]
+    [Tooltip("Amount to accelerate movement of rotation when shift is pressed.")]
+    private float shiftAdd = 25.0f;
+    [SerializeField]
+    [Tooltip("Maximum speed when holding shift.")]
+    private float maxShift = 100.0f;
     private float totalRun = 1.0f;
 
     void Update() {
