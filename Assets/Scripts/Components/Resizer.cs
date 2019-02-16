@@ -15,7 +15,7 @@ public class Resizer : MonoBehaviour {
 
         var teleporter = collision.gameObject.GetComponent<Teleportable>();
         if (teleporter != null) {
-            teleporter.teleport(outputStage);
+            teleporter.teleportAndZeroOutForce(outputStage);
         }
     }
 }

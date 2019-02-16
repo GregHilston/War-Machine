@@ -3,12 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Teleportable : MonoBehaviour {
-    public void teleport(GameObject destination) {
-        this.transform.position = destination.transform.position;
+    private void zeroOutForce() {
+        var myRigidBody = this.GetComponent<Rigidbody>();
+        if (myRigidBody != null) {
+            // zeroring out any forces
+            myRigidBody.velocity = Vector3.zero;
+            myRigidBody.angularVelocity = Vector3.zero;
+        }
     }
 
-    public void teleport(Vector3 position, Quaternion rotation) {
+    public void teleportAndZeroOutForce(GameObject destination) {
+        this.transform.position = destination.transform.position;
+        this.transform.rotation = destination.transform.rotation;
+
+        zeroOutForce();
+    }
+
+    public void teleportAndZeroOutForce(Vector3 position, Quaternion rotation) {
         this.transform.position = position;
         this.transform.rotation = rotation;
+
+        zeroOutForce();
     }
 }

@@ -9,22 +9,19 @@ public class Splitter : MonoBehaviour {
     private bool shouldGoToOutput1 = true;
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.GetComponent<Splittable>() != null) {
-            Vector3 intendedPosition;
-            Quaternion intendedRotation;
+        var splittable = collision.gameObject.GetComponent<Splittable>();
+        if (splittable != null) {
+            var teleportable = collision.gameObject.GetComponent<Teleportable>();
+            if (teleportable != null) {
+                if (shouldGoToOutput1) {
+                    teleportable.teleportAndZeroOutForce(outputStage1);
+                } else {
+                    teleportable.teleportAndZeroOutForce(outputStage2);
+                }
 
-            if (shouldGoToOutput1) {
-                intendedPosition = outputStage1.transform.position;
-                intendedRotation = outputStage1.transform.rotation;
-            } else {
-                intendedPosition = outputStage2.transform.position;
-                intendedRotation = outputStage2.transform.rotation;
+                shouldGoToOutput1 = !shouldGoToOutput1;
             }
 
-            collision.gameObject.transform.position = intendedPosition;
-            collision.gameObject.transform.rotation = intendedRotation;
-
-            shouldGoToOutput1 = !shouldGoToOutput1;
         }
     }
 }

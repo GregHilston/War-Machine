@@ -9,7 +9,7 @@ public class Cannon : MonoBehaviour {
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.GetComponent<Launchable>() != null) {
             if (barrel != null) {
-                collision.gameObject.GetComponent<Teleportable>().teleport(barrel.transform.position, barrel.transform.rotation);
+                collision.gameObject.GetComponent<Teleportable>().teleportAndZeroOutForce(barrel.transform.position, barrel.transform.rotation);
 
 
                 collision.gameObject.GetComponent<Launchable>().launch(barrel.transform.up * thrust);
