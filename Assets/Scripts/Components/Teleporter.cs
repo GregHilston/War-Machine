@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Teleports objects of type Teleportable to location.
+/// </summary>
 public class Teleporter : MonoBehaviour {
     [SerializeField]
     [Tooltip("Where Teleporter should teleport the collided object to.")]

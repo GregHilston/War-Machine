@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Launches Launchable objects.
+/// </summary>
 public class Cannon : MonoBehaviour {
     [SerializeField]
     [Tooltip("Reference to the barrel, where we'll actually launch an object out of.")]

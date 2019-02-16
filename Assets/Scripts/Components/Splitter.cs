@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Utilizies this GameObject as an input and moves all objects of type Splittable to outputStage1 and outputStage2, round robin style.
+/// </summary>
 public class Splitter : MonoBehaviour {
     [SerializeField]
     [Tooltip("Location where half the output should go.")]

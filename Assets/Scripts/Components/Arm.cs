@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Moves Armable objects from one position to another.
+/// </summary>
 [RequireComponent(typeof(Animator))]
 public class Arm : MonoBehaviour {
     [SerializeField]

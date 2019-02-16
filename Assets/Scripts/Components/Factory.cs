@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Turns objects of type input, into type output, moving the newly created output to the outputStage.
+/// </summary>
 public class Factory : MonoBehaviour {
     [SerializeField]
     [Tooltip("What type of objects this Factory takes as input")]

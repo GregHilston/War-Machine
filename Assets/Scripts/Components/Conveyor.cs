@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Continuously Conveys Conveyable objects to the endpoint.
+/// </summary>
 public class Conveyor : MonoBehaviour {
     [SerializeField]
     [Tooltip("Where we should send the object to. Generally the point is past the Conveyor's point, so we don't stop moving on this GameObject.")]

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Resizes Resizable objects, by a factor of scaleMultiplier.
+/// </summary>
 public class Resizer : MonoBehaviour {
     [SerializeField]
     [Tooltip("Where to place the resized object.")]
