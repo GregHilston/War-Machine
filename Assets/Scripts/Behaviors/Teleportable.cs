@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Moves this object to a new location.
+/// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class Teleportable : MonoBehaviour {
     private void zeroOutForce() {
