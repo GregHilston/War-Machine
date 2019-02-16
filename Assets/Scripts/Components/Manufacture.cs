@@ -9,10 +9,11 @@ public class Manufacture : MonoBehaviour {
     public float processTime = 1.0f;
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.GetComponent<Manufactureable>() != null) {
+        var manufactureable = collision.gameObject.GetComponent<Manufactureable>();
+
+        if (manufactureable != null) {
             if (collision.gameObject.GetType() == input.GetType()) {
-                SimplePool.Spawn(output, outputStage.transform.position, outputStage.transform.rotation); // create new item before we lose reference to old one
-                SimplePool.Despawn(collision.gameObject); // delete old one
+                manufactureable.transformOneObjectIntoAnother(manufactureable.gameObject, output, outputStage.transform.position, outputStage.transform.rotation);
             }
         }
     }

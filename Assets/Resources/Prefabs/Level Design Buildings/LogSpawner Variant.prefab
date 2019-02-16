@@ -10,7 +10,18 @@ PrefabInstance:
     - target: {fileID: 3033362495798048807, guid: 8ab7515fb9e4de34ebede372cf458285,
         type: 3}
       propertyPath: m_Name
-      value: LogSpawner Variant (1)
+      value: LogSpawner Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786098164399816306, guid: 8ab7515fb9e4de34ebede372cf458285,
+        type: 3}
+      propertyPath: objectToSpawn
+      value: 
+      objectReference: {fileID: 6541329804399880305, guid: a71b33c85089c1f4882b67122769c38e,
+        type: 3}
+    - target: {fileID: 5786098164399816306, guid: 8ab7515fb9e4de34ebede372cf458285,
+        type: 3}
+      propertyPath: startAt
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1977016235626490188, guid: 8ab7515fb9e4de34ebede372cf458285,
         type: 3}
@@ -67,11 +78,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5786098164399816306, guid: 8ab7515fb9e4de34ebede372cf458285,
-        type: 3}
-      propertyPath: objectToSpawn
-      value: 
-      objectReference: {fileID: 6541329804399880305, guid: a71b33c85089c1f4882b67122769c38e,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ab7515fb9e4de34ebede372cf458285, type: 3}

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Launcher : MonoBehaviour {
+public class Cannon : MonoBehaviour {
     public GameObject barrel;
     public float thrust = 1000.0f;
 
