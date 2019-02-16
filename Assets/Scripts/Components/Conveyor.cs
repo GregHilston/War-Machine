@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Convey : MonoBehaviour {
+public class Conveyor : MonoBehaviour {
     public Transform endpoint;
     public float speed;
 

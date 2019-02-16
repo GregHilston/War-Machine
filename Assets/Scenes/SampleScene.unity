@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 78906049}
   - component: {fileID: 78906048}
   m_Layer: 0
-  m_Name: Belt (2)
+  m_Name: Conveyor (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -531,7 +531,7 @@ GameObject:
   - component: {fileID: 476787630}
   - component: {fileID: 476787631}
   m_Layer: 0
-  m_Name: Belt
+  m_Name: Conveyor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -782,7 +782,7 @@ GameObject:
   - component: {fileID: 572603916}
   - component: {fileID: 572603915}
   m_Layer: 0
-  m_Name: Belt (1)
+  m_Name: Conveyor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1009,7 +1009,7 @@ GameObject:
   - component: {fileID: 793021129}
   - component: {fileID: 793021128}
   m_Layer: 0
-  m_Name: Belt (3)
+  m_Name: Conveyor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1469,7 +1469,7 @@ GameObject:
   - component: {fileID: 1294983652}
   - component: {fileID: 1294983651}
   m_Layer: 0
-  m_Name: Belt (4)
+  m_Name: Conveyor (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
