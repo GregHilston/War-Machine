@@ -1,4 +1,4 @@
-﻿///
+///
 /// Simple pooling for Unity.
 ///   Author: Martin "quill18" Glaude (quill18@quill18.com)
 ///   Latest Version: https://gist.github.com/quill18/5a7cfffae68892621267
