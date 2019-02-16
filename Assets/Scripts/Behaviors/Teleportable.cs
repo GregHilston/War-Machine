@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Teleportable : MonoBehaviour {
     private void zeroOutForce() {
         var myRigidBody = this.GetComponent<Rigidbody>();
