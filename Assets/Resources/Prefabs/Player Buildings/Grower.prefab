@@ -356,8 +356,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outputStage: {fileID: 317956814}
+  scaleMultiplier: 1.25
   processTime: 1
-  downScaleMultiplyer: 1.5
 --- !u!1 &1931996759
 GameObject:
   m_ObjectHideFlags: 0
