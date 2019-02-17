@@ -1,0 +1,1 @@
+find Assets/Scripts -type f -exec dos2unix {} \;
