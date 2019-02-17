@@ -8,6 +8,6 @@ using UnityEngine;
 public class Factoryable : MonoBehaviour {
     public void transformOneObjectIntoAnother(GameObject input, GameObject output, Vector3 outputPosition, Quaternion outputRotation, float processTime = 0.0f) {
         SimplePool.Despawn(input); // delete old one
-        StartCoroutine(Invoker.Invoke(() => SimplePool.Spawn(output, outputPosition, outputRotation), processTime));
+        SimplePool.Spawn(output, outputPosition, outputRotation);
     }
 }
