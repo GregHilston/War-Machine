@@ -24,7 +24,7 @@ public class Factory : MonoBehaviour {
 
         if (factoryable != null) {
             if (collision.gameObject.GetType() == input.GetType()) {
-                factoryable.transformOneObjectIntoAnother(factoryable.gameObject, output, outputStage.transform.position, outputStage.transform.rotation);
+                factoryable.transformOneObjectIntoAnother(factoryable.gameObject, output, outputStage.transform.position, outputStage.transform.rotation, this.processTime);
             }
         }
     }
