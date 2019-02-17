@@ -13,4 +13,8 @@ public class Launchable : MonoBehaviour {
             myRigidBody.AddForce(force);
         }
     }
+
+    public void launch(Vector3 force, float processTime) {
+        StartCoroutine(Invoker.Invoke(() => this.launch(force), processTime));
+    }
 }

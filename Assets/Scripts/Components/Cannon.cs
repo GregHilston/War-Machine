@@ -12,13 +12,16 @@ public class Cannon : MonoBehaviour {
     [SerializeField]
     [Tooltip("How much force to apply to the object we're launching.")]
     private float thrust = 1000.0f;
+    [SerializeField]
+    [Tooltip("How long it should take to Cannon")]
+    private float processTime = 0.0f;
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.GetComponent<Launchable>() != null) {
             if (barrel != null) {
                 collision.gameObject.GetComponent<Teleportable>().teleportAndZeroOutForce(barrel.transform.position, barrel.transform.rotation);
 
-                collision.gameObject.GetComponent<Launchable>().launch(barrel.transform.up * thrust);
+                collision.gameObject.GetComponent<Launchable>().launch(barrel.transform.up * thrust, this.processTime);
             }
         }
     }

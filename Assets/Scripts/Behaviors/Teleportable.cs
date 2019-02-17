@@ -16,6 +16,13 @@ public class Teleportable : MonoBehaviour {
         }
     }
 
+    public void teleportAndZeroOutForce(GameObject destination, float processTime) {
+        this.transform.position = destination.transform.position;
+        this.transform.rotation = destination.transform.rotation;
+
+        zeroOutForce();
+    }
+
     public void teleportAndZeroOutForce(GameObject destination) {
         this.transform.position = destination.transform.position;
         this.transform.rotation = destination.transform.rotation;
