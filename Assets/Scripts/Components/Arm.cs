@@ -11,6 +11,8 @@ public class Arm : MonoBehaviour {
     [Tooltip("Reference to the parent empty game object, so this arm can control animations for all the child objects.")]
     private Transform armParent;
     private Collider holding;
+    private Vector3 previousScale;
+    private GameObject lastCollidedWith;
 
     void Update() {
         var animator = armParent.GetComponent<Animator>();
@@ -18,6 +20,7 @@ public class Arm : MonoBehaviour {
             if (holding != null && animator.GetCurrentAnimatorStateInfo(0).IsName("ArmRotated")) {
                 animator.SetBool("CaughtItem", false);
                 holding.transform.parent = null;
+                holding.gameObject.transform.localScale = previousScale;
                 holding = null;
             }
         }
@@ -27,8 +30,10 @@ public class Arm : MonoBehaviour {
         var animator = armParent.GetComponent<Animator>();
         if (animator != null) {
             var armable = col.GetComponent<Armable>();
-            if (armable != null && holding == null) {
+            if (armable != null && holding == null && col.gameObject != lastCollidedWith) {
                 holding = col;
+                lastCollidedWith = col.gameObject;
+                previousScale = col.gameObject.transform.localScale;
 
                 col.transform.SetParent(gameObject.transform, true);
                 animator.SetBool("CaughtItem", true);
