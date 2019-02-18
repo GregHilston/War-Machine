@@ -15,8 +15,6 @@ public class GoalPlatform : MonoBehaviour {
 
         GoalPlatform.despawnCount.TryGetValue(originalPrefabName, out currentCount);
         GoalPlatform.despawnCount[originalPrefabName] = currentCount + 1;
-
-        Debug.Log(GoalPlatform.despawnCount[originalPrefabName] + " " + originalPrefabName + " have made it to GoalPlatform");
     }
 
     private void OnCollisionEnter(Collision collision) {
