@@ -28,7 +28,7 @@ public class Arm : MonoBehaviour {
 
     private void OnTriggerEnter(Collider col) {
         var animator = armParent.GetComponent<Animator>();
-        if (animator != null) {
+        if (animator != null && (animator.GetCurrentAnimatorStateInfo(0).IsName("UnRotated") || animator.GetCurrentAnimatorStateInfo(0).IsName("ArmStill"))) {
             var armable = col.GetComponent<Armable>();
             if (armable != null && holding == null && col.gameObject != lastCollidedWith) {
                 holding = col;
