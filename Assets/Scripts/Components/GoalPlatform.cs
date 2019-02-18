@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 /// <summary>
 /// Keeps track of how many of each type of item has touched it and despawned.
@@ -9,6 +10,9 @@ public class GoalPlatform : MonoBehaviour {
     static Dictionary<string, int> despawnCount = new Dictionary<string, int>();
 
     private void IncrementCount(GameObject gameObject) {
+        Object parent = PrefabUtility.GetCorrespondingObjectFromSource(gameObject);
+        string path = AssetDatabase.GetAssetPath(gameObject);
+        Debug.Log("path: " + path);
         int currentCount;
         GoalPlatform.despawnCount.TryGetValue(gameObject.GetType().ToString(), out currentCount);
         GoalPlatform.despawnCount[gameObject.GetType().ToString()] = currentCount + 1;
