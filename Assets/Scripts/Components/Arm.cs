@@ -27,7 +27,7 @@ public class Arm : MonoBehaviour {
         var animator = armParent.GetComponent<Animator>();
         if (animator != null) {
             var armable = col.GetComponent<Armable>();
-            if (armable != null) {
+            if (armable != null && holding == null) {
                 holding = col;
 
                 col.transform.SetParent(gameObject.transform, true);
