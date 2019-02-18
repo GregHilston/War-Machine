@@ -81,6 +81,10 @@ public static class SimplePool {
                 // Add a PoolMember component so we know what pool
                 // we belong to.
                 obj.AddComponent<PoolMember>().myPool = this;
+
+                // Keeping track of the original prefab that was used
+                // to create this object
+                SimplePool.gameObjectPrefabTypes[obj] = prefab.name;
             }
             else {
                 // Arm the last object in the inactive array
@@ -131,6 +135,9 @@ public static class SimplePool {
 
     // All of our pools
     static Dictionary< GameObject, Pool > pools;
+
+    // Keeps track of what Prefab was used to instantiate a GameObject
+    static Dictionary<GameObject, string> gameObjectPrefabTypes = new Dictionary<GameObject, string>();
 
     /// <summary>
     /// Initialize our dictionary.
@@ -192,6 +199,10 @@ public static class SimplePool {
         else {
             pm.myPool.Despawn(obj);
         }
+    }
+
+    static public string GetOriginalPrefabName(GameObject gameObject) {
+        return SimplePool.gameObjectPrefabTypes[gameObject];
     }
     
 }

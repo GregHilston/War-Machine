@@ -10,14 +10,13 @@ public class GoalPlatform : MonoBehaviour {
     static Dictionary<string, int> despawnCount = new Dictionary<string, int>();
 
     private void IncrementCount(GameObject gameObject) {
-        Object parent = PrefabUtility.GetCorrespondingObjectFromSource(gameObject);
-        string path = AssetDatabase.GetAssetPath(gameObject);
-        Debug.Log("path: " + path);
         int currentCount;
-        GoalPlatform.despawnCount.TryGetValue(gameObject.GetType().ToString(), out currentCount);
-        GoalPlatform.despawnCount[gameObject.GetType().ToString()] = currentCount + 1;
+        string originalPrefabName = SimplePool.GetOriginalPrefabName(gameObject);
 
-        Debug.Log(GoalPlatform.despawnCount[gameObject.GetType().ToString()] + " " + gameObject.GetType().ToString() + " have made it to GoalPlatform");
+        GoalPlatform.despawnCount.TryGetValue(originalPrefabName, out currentCount);
+        GoalPlatform.despawnCount[originalPrefabName] = currentCount + 1;
+
+        Debug.Log(GoalPlatform.despawnCount[originalPrefabName] + " " + originalPrefabName + " have made it to GoalPlatform");
     }
 
     private void OnCollisionEnter(Collision collision) {
