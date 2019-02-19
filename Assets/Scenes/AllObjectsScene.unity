@@ -221,7 +221,7 @@ PrefabInstance:
     - target: {fileID: 5786098164399816306, guid: 8ab7515fb9e4de34ebede372cf458285,
         type: 3}
       propertyPath: repeatEverySeconds
-      value: 2
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 5786098164399816306, guid: 8ab7515fb9e4de34ebede372cf458285,
         type: 3}
