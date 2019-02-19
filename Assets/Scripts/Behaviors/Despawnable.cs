@@ -26,10 +26,14 @@ public class Despawnable : MonoBehaviour {
     public void HappilyDespawn() {
         this.IncrementCount(Despawnable.happyDespawnCount);
         SimplePool.Despawn(this.gameObject);
+
+        // Debug.Log("Happily despawned " + Despawnable.happyDespawnCount[SimplePool.GetOriginalPrefabName(this.gameObject)] + " " + SimplePool.GetOriginalPrefabName(this.gameObject) + "s");
     }
 
     public void AngrilyDespawn() {
         this.IncrementCount(Despawnable.angryDespawnCount);
         SimplePool.Despawn(this.gameObject);
+
+        // Debug.Log("Angrily despawned " + Despawnable.angryDespawnCount[SimplePool.GetOriginalPrefabName(this.gameObject)] + " " + SimplePool.GetOriginalPrefabName(this.gameObject) + "s");
     }
 }
