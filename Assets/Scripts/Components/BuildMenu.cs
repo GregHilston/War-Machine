@@ -13,6 +13,7 @@ public class BuildMenu : MonoBehaviour {
     GameObject parentButton;
     private bool activateChildrenButtons = false;
     private List<string> playerBuildingPrefabs = new List<string>();
+    private List<GameObject> childButtons = new List<GameObject>();
 
     private void fetchPlayerBuildingPrefabs() {
         string filePath = "Assets/Resources/Prefabs/Player Buildings";
@@ -38,6 +39,10 @@ public class BuildMenu : MonoBehaviour {
                                                         parentButton.transform.position.x, 
                                                         parentButton.transform.position.y + iOneBasedForMultiplication * 30.0f, 
                                                         parentButton.transform.position.z);
+
+            newButton.SetActive(false); // hidden by default
+
+            childButtons.Add(newButton);
         }
     }
 
@@ -47,6 +52,10 @@ public class BuildMenu : MonoBehaviour {
     }
 
     public void ToogleActivateChildrenButtons() {
-        Debug.Log(playerBuildingPrefabs);
+        this.activateChildrenButtons = !this.activateChildrenButtons;
+
+        foreach (GameObject button in this.childButtons) {
+            button.SetActive(this.activateChildrenButtons);
+        }
     }
 }
