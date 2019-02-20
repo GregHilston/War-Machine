@@ -54,6 +54,10 @@ public class DynamicButtonCreator : MonoBehaviour {
 
             newButton.SetActive(false); // hidden by default
 
+            Debug.Log("Added listener on " + playerBuildingPrefabs[i] + " with index " + i);
+            int tempInt = i; // required so we can increment i without affected this tempInt
+            newButton.GetComponent<Button>().onClick.AddListener(() => BuildABuildingButtonClicked(tempInt));
+
             childButtons.Add(newButton);
         }
     }
@@ -69,5 +73,12 @@ public class DynamicButtonCreator : MonoBehaviour {
         foreach (GameObject button in this.childButtons) {
             button.SetActive(this.activateChildrenButtons);
         }
+    }
+
+    void BuildABuildingButtonClicked(int buttonNo) {
+        Debug.Log("Click on buttonNo: " + buttonNo);
+
+        BuildingPlacer buildingPlacer = this.GetComponent<BuildingPlacer>();
+        buildingPlacer.buildingToCreate = (GameObject)Resources.Load(this.filePath + this.playerBuildingPrefabs[buttonNo] + this.fileEndingToRemove);
     }
 }
