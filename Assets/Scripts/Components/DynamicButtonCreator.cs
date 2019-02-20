@@ -28,6 +28,7 @@ public class DynamicButtonCreator : MonoBehaviour {
     private List<string> playerBuildingPrefabs = new List<string>();
     private List<GameObject> childButtons = new List<GameObject>();
     private float buttonHeight = 30.0f;
+    private BuildingPlacer buildingPlacer;
 
     private void fetchPlayerBuildingPrefabs() {
         DirectoryInfo dir = new DirectoryInfo(filePath);
@@ -62,6 +63,7 @@ public class DynamicButtonCreator : MonoBehaviour {
     }
 
     void Start() {
+        this.buildingPlacer = this.GetComponent<BuildingPlacer>();
         this.fetchPlayerBuildingPrefabs();
         this.addPlayerBuildingPrefabButtonsDeactivated();
     }
@@ -75,8 +77,10 @@ public class DynamicButtonCreator : MonoBehaviour {
     }
 
     void BuildABuildingButtonClicked(int buttonNo) {
-        BuildingPlacer buildingPlacer = this.GetComponent<BuildingPlacer>();
-        string filePath = this.filePath  + "/" + this.playerBuildingPrefabs[buttonNo] + this.fileEndingToRemove;
-        buildingPlacer.buildingToCreate = (GameObject)Resources.Load(filePath);
+        string filePath = "Prefabs/Player Buildings/" + this.playerBuildingPrefabs[buttonNo];
+        GameObject buildingToCreate = (GameObject)Resources.Load(filePath);
+        Debug.Log("filePath: " + filePath);
+        Debug.Log(buildingToCreate.name);
+        this.buildingPlacer.buildingToCreate = buildingToCreate;
     }
 }

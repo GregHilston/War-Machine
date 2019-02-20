@@ -7,6 +7,8 @@ public class BuildingPlacer : MonoBehaviour {
 
     private bool isFollowing = false;
 
+    private float ground = 0.02f;
+
     private RaycastHit RayFromCamera(Vector3 mousePosition, float rayLength) {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
@@ -24,6 +26,7 @@ public class BuildingPlacer : MonoBehaviour {
     void Update() {
         // Initial Creation
         if (buildingToCreate != null && isFollowing == false) {
+            Debug.Log("Initial creation!");
             buildingToCreate = Instantiate(buildingToCreate, transform.position, transform.rotation);
 
             isFollowing = true;
@@ -31,15 +34,18 @@ public class BuildingPlacer : MonoBehaviour {
 
         // Building
         if (Input.GetButtonDown("Fire1") && buildingToCreate != null) {
+            Debug.Log("Initial Building!");
             isFollowing = false;
             buildingToCreate = null;
         }
 
         // Moving
         if (buildingToCreate != null) {
+            Debug.Log("Moving!");
+
             Vector3 mousePosition = ConvertMousePositionToCorrectCoordinateSystem(Input.mousePosition);
 
-            buildingToCreate.transform.position = new Vector3(mousePosition.x, 0.5f, mousePosition.z); ;
+            buildingToCreate.transform.position = new Vector3(mousePosition.x, ground, mousePosition.z); ;
         }
     }
 }
