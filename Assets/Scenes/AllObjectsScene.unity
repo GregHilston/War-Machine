@@ -1448,6 +1448,9 @@ MonoBehaviour:
   buttonPrefab: {fileID: 4701018217650971638, guid: 45e2ef5f9f5134681a7696ca5168ab5e,
     type: 3}
   parentButton: {fileID: 912419929}
+  filePath: Assets/Resources/Prefabs/Player Buildings
+  fileEndingsToIgnore: .meta
+  fileEndingToRemove: .prefab
 --- !u!4 &914708467
 Transform:
   m_ObjectHideFlags: 0
