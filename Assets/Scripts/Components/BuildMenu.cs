@@ -27,14 +27,17 @@ public class BuildMenu : MonoBehaviour {
     }
 
     private void addPlayerBuildingPrefabButtonsDeactivated() {
-        for (int i = 1; i <= this.playerBuildingPrefabs.Count; i++) {
+        for (int i = 0; i < this.playerBuildingPrefabs.Count; i++) {
             GameObject newButton = Instantiate(this.buttonPrefab) as GameObject;
             newButton.transform.SetParent(this.parentButton.transform, false);
 
             newButton.GetComponentInChildren<Text>().text = this.playerBuildingPrefabs[i];
             newButton.transform.SetParent(this.parentButton.transform, false);
-            newButton.transform.position = new Vector3(parentButton.transform.position.x, parentButton.transform.position.y + i * 30.0f, parentButton.transform.position.z);
-            newButton.transform.localScale = new Vector3(1, 1, 1);
+            int iOneBasedForMultiplication = i + 1;
+            newButton.transform.position = new Vector3(
+                                                        parentButton.transform.position.x, 
+                                                        parentButton.transform.position.y + iOneBasedForMultiplication * 30.0f, 
+                                                        parentButton.transform.position.z);
         }
     }
 
