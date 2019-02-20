@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,7 +23,7 @@ public class BuildMenu : MonoBehaviour {
         FileInfo[] info = dir.GetFiles("*.*");
         foreach (FileInfo f in info) {
             if (!f.Name.EndsWith(metaExtension)) {
-                this.playerBuildingPrefabs.Add(f.Name);
+                this.playerBuildingPrefabs.Add(f.Name.Split(new[] { ".prefab" }, StringSplitOptions.None)[0]);
             }
         }
     }
