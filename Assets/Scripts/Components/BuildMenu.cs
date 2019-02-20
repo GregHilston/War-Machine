@@ -33,8 +33,8 @@ public class BuildMenu : MonoBehaviour {
 
             newButton.GetComponentInChildren<Text>().text = this.playerBuildingPrefabs[i];
             newButton.transform.SetParent(this.parentButton.transform, false);
+            newButton.transform.position = new Vector3(parentButton.transform.position.x, parentButton.transform.position.y + i * 30.0f, parentButton.transform.position.z);
             newButton.transform.localScale = new Vector3(1, 1, 1);
-            newButton.transform.position = new Vector3(parentButton.transform.position.x, parentButton.transform.position.y + i * this.transform.localScale.y, parentButton.transform.position.z);
         }
     }
 
