@@ -17,7 +17,7 @@ public class DynamicButtonCreator : MonoBehaviour {
     private GameObject parentButton;
     [SerializeField]
     [Tooltip("Relative folder to look at for content.")]
-    private string filePath = "Assets/Resources/Prefabs/Player Buildings";
+    private string filePath = "Assets/Resources/Prefabs/Player Buildings/";
     [SerializeField]
     [Tooltip("We won't build dynamic buttons for files that end in this string.")]
     private string fileEndingsToIgnore = ".meta";
@@ -54,7 +54,6 @@ public class DynamicButtonCreator : MonoBehaviour {
 
             newButton.SetActive(false); // hidden by default
 
-            Debug.Log("Added listener on " + playerBuildingPrefabs[i] + " with index " + i);
             int tempInt = i; // required so we can increment i without affected this tempInt
             newButton.GetComponent<Button>().onClick.AddListener(() => BuildABuildingButtonClicked(tempInt));
 
@@ -76,9 +75,8 @@ public class DynamicButtonCreator : MonoBehaviour {
     }
 
     void BuildABuildingButtonClicked(int buttonNo) {
-        Debug.Log("Click on buttonNo: " + buttonNo);
-
         BuildingPlacer buildingPlacer = this.GetComponent<BuildingPlacer>();
-        buildingPlacer.buildingToCreate = (GameObject)Resources.Load(this.filePath + this.playerBuildingPrefabs[buttonNo] + this.fileEndingToRemove);
+        string filePath = this.filePath  + "/" + this.playerBuildingPrefabs[buttonNo] + this.fileEndingToRemove;
+        buildingPlacer.buildingToCreate = (GameObject)Resources.Load(filePath);
     }
 }
