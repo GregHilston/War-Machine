@@ -1325,7 +1325,7 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &912419931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1442,7 +1442,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 914708465}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32b307c47664e4c758bfa5449753420d, type: 3}
+  m_Script: {fileID: 11500000, guid: 352716824178541d6afed518c5b44ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonPrefab: {fileID: 4701018217650971638, guid: 45e2ef5f9f5134681a7696ca5168ab5e,
@@ -1638,7 +1638,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 503, y: 30}
+  m_SizeDelta: {x: 416, y: 30}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1000648302
 MonoBehaviour:

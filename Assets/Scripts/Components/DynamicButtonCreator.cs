@@ -5,7 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 
-public class BuildMenu : MonoBehaviour {
+/// <summary>
+/// Creates buttons dynamically by looking at files in some folder.
+/// </summary>
+public class DynamicButtonCreator : MonoBehaviour {
     [SerializeField]
     [Tooltip("Basic Button prefab to act as a basis of instantiation.")]
     private GameObject buttonPrefab;
