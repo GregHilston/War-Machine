@@ -8,6 +8,7 @@ using System.IO;
 /// <summary>
 /// Creates buttons dynamically by looking at files in some folder.
 /// </summary>
+[RequireComponent(typeof(BuildingPlacer))]
 public class DynamicButtonCreator : MonoBehaviour {
     [SerializeField]
     [Tooltip("Basic Button prefab to act as a basis of instantiation.")]

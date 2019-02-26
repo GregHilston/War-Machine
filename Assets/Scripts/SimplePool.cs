@@ -76,6 +76,7 @@ public static class SimplePool {
                 // We don't have an object in our pool, so we
                 // instantiate a whole new object.
                 obj = (GameObject)GameObject.Instantiate(prefab, pos, rot);
+                obj.transform.parent = GameObject.Find("MapItems").transform;
                 obj.name = prefab.name + " ("+(nextId++)+")";
 
                 // Add a PoolMember component so we know what pool
