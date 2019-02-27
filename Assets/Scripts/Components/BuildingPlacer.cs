@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(UserInputEventRouter))]
 public class BuildingPlacer : MonoBehaviour {
     public GameObject buildingToCreate;
 

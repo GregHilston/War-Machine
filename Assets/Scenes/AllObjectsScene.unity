@@ -1733,6 +1733,7 @@ GameObject:
   - component: {fileID: 914708467}
   - component: {fileID: 914708466}
   - component: {fileID: 914708468}
+  - component: {fileID: 914708469}
   m_Layer: 0
   m_Name: MenuButtonCreatorAndButtonPlacer
   m_TagString: Untagged
@@ -1785,6 +1786,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingToCreate: {fileID: 0}
+--- !u!114 &914708469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914708465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f09d114c6997b40b2b438a4f4c7252fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &942641785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2550,6 +2563,7 @@ GameObject:
   - component: {fileID: 1430730793}
   - component: {fileID: 1430730796}
   - component: {fileID: 1430730795}
+  - component: {fileID: 1430730797}
   m_Layer: 0
   m_Name: GameMenuController
   m_TagString: Untagged
@@ -2609,6 +2623,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameMenuParentObject: {fileID: 219634449}
+--- !u!114 &1430730797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430730792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f09d114c6997b40b2b438a4f4c7252fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1508251903 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 71966166578692365, guid: 644fe8687480748c3a5a041291a038fb,
