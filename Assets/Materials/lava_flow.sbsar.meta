@@ -1,0 +1,362 @@
+fileFormatVersion: 2
+guid: 7311f93ae57ad4797a12b11e12b4b370
+ScriptedImporter:
+  fileIDToRecycleName:
+    2100000: Lava Flow
+    2100002: Lava Flow_1
+    2100004: Lava Flow_2
+    2800000: Lava Flow - baseColor
+    2800002: Lava Flow - normal
+    2800004: Lava Flow - emissive
+    2800006: Lava Flow - metallic
+    2800008: Lava Flow - height
+    2800010: Lava Flow - ambientOcclusion
+    2800012: Lava Flow_1 - baseColor
+    2800014: Lava Flow_1 - normal
+    2800016: Lava Flow_1 - emissive
+    2800018: Lava Flow_1 - metallic
+    2800020: Lava Flow_1 - height
+    2800022: Lava Flow_1 - ambientOcclusion
+    2800024: Lava Flow_2 - baseColor
+    2800026: Lava Flow_2 - normal
+    2800028: Lava Flow_2 - emissive
+    2800030: Lava Flow_2 - metallic
+    2800032: Lava Flow_2 - height
+    2800034: Lava Flow_2 - ambientOcclusion
+    11400000: sbsar
+    11400002: graph0
+    11400004: graph1
+    11400006: graph2
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 232528478, guid: 43a8bbf65be290d44ba52b94476242b9, type: 3}
+  version: 17
+  mGraphInstanceData:
+  - graphLabel: Lava Flow
+    prototypeName: Lava Flow
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://lava_flow\" label=\"\" >\n  <presetinput identifier=\"$randomseed\"
+      uid=\"2057460030\" type=\"4\" value=\"7177\" />\n  <presetinput identifier=\"cracks\"
+      uid=\"1478425765\" type=\"0\" value=\"1\" />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,emissive,metallic,height,ambientOcclusion
+    texturePackingList:
+    - outputName: diffuse
+      alphaSource: diffuse
+    - outputName: baseColor
+      alphaSource: baseColor
+    - outputName: normal
+      alphaSource: normal
+    - outputName: specular
+      alphaSource: specular
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: glossiness
+      alphaSource: glossiness
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: ambientOcclusion
+      alphaSource: ambientOcclusion
+    textureParameters:
+    - textureName: Lava Flow - glossiness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow - diffuse
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow - specular
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow - emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: diffuse
+      bLinear: 0
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: specular
+      bLinear: 0
+    - outputName: emissive
+      bLinear: 0
+    - outputName: glossiness
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: ambientOcclusion
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      textureWidth: 256
+      textureHeight: 256
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100000, guid: 7311f93ae57ad4797a12b11e12b4b370, type: 3}
+    generatedTextures:
+    - {fileID: 2800010, guid: 7311f93ae57ad4797a12b11e12b4b370, type: 3}
+    - {fileID: 2800000, guid: 7311f93ae57ad4797a12b11e12b4b370, type: 3}
+    - {fileID: 2800004, guid: 7311f93ae57ad4797a12b11e12b4b370, type: 3}
+    - {fileID: 2800008, guid: 7311f93ae57ad4797a12b11e12b4b370, type: 3}
+    - {fileID: 2800006, guid: 7311f93ae57ad4797a12b11e12b4b370, type: 3}
+    - {fileID: 2800002, guid: 7311f93ae57ad4797a12b11e12b4b370, type: 3}
+  - graphLabel: Lava Flow_1
+    prototypeName: Lava Flow
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://lava_flow\" label=\"\" >\n  <presetinput identifier=\"$randomseed\"
+      uid=\"2057460030\" type=\"4\" value=\"7177\" />\n  <presetinput identifier=\"lava_color\"
+      uid=\"1476647378\" type=\"2\" value=\"0.358491,0.241373,0.0219829\" />\n  <presetinput
+      identifier=\"volcanic_plant_color\" uid=\"1509477666\" type=\"2\" value=\"0.182865,0.235849,0.0166874\"
+      />\n  <presetinput identifier=\"cracks\" uid=\"1478425765\" type=\"0\" value=\"0\"
+      />\n  <presetinput identifier=\"ash_density\" uid=\"1509027507\" type=\"0\"
+      value=\"1\" />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,emissive,metallic,height,ambientOcclusion
+    texturePackingList:
+    - outputName: diffuse
+      alphaSource: diffuse
+    - outputName: baseColor
+      alphaSource: baseColor
+    - outputName: normal
+      alphaSource: normal
+    - outputName: specular
+      alphaSource: specular
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: glossiness
+      alphaSource: glossiness
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: ambientOcclusion
+      alphaSource: ambientOcclusion
+    textureParameters:
+    - textureName: Lava Flow_1 - glossiness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow_1 - diffuse
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow_1 - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow_1 - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow_1 - specular
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow_1 - emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow_1 - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow_1 - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow_1 - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow_1 - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: diffuse
+      bLinear: 0
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: specular
+      bLinear: 0
+    - outputName: emissive
+      bLinear: 0
+    - outputName: glossiness
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: ambientOcclusion
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      textureWidth: 256
+      textureHeight: 256
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100002, guid: 7311f93ae57ad4797a12b11e12b4b370, type: 3}
+    generatedTextures:
+    - {fileID: 2800022, guid: 7311f93ae57ad4797a12b11e12b4b370, type: 3}
+    - {fileID: 2800012, guid: 7311f93ae57ad4797a12b11e12b4b370, type: 3}
+    - {fileID: 2800016, guid: 7311f93ae57ad4797a12b11e12b4b370, type: 3}
+    - {fileID: 2800020, guid: 7311f93ae57ad4797a12b11e12b4b370, type: 3}
+    - {fileID: 2800018, guid: 7311f93ae57ad4797a12b11e12b4b370, type: 3}
+    - {fileID: 2800014, guid: 7311f93ae57ad4797a12b11e12b4b370, type: 3}
+  - graphLabel: Lava Flow_2
+    prototypeName: Lava Flow
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://lava_flow\" label=\"\" >\n  <presetinput identifier=\"$randomseed\"
+      uid=\"2057460030\" type=\"4\" value=\"7177\" />\n  <presetinput identifier=\"lava_color\"
+      uid=\"1476647378\" type=\"2\" value=\"0.831373,0.0313725,0.323529\" />\n  <presetinput
+      identifier=\"cracks\" uid=\"1478425765\" type=\"0\" value=\"1\" />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,emissive,metallic,height,ambientOcclusion
+    texturePackingList:
+    - outputName: diffuse
+      alphaSource: diffuse
+    - outputName: baseColor
+      alphaSource: baseColor
+    - outputName: normal
+      alphaSource: normal
+    - outputName: specular
+      alphaSource: specular
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: glossiness
+      alphaSource: glossiness
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: ambientOcclusion
+      alphaSource: ambientOcclusion
+    textureParameters:
+    - textureName: Lava Flow_2 - glossiness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow_2 - diffuse
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow_2 - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow_2 - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow_2 - specular
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow_2 - emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow_2 - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow_2 - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow_2 - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava Flow_2 - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: diffuse
+      bLinear: 0
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: specular
+      bLinear: 0
+    - outputName: emissive
+      bLinear: 0
+    - outputName: glossiness
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: ambientOcclusion
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      textureWidth: 256
+      textureHeight: 256
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100004, guid: 7311f93ae57ad4797a12b11e12b4b370, type: 3}
+    generatedTextures: []
