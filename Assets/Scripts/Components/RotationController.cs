@@ -23,12 +23,15 @@ public class RotationController : MonoBehaviour {
     [SerializeField]
     [Tooltip("Key code to rotate counter clockwise.")]
     private KeyCode rotateCounterClockWiseKeyCode = KeyCode.Q;
+    [SerializeField]
+    [Tooltip("Key code to speed up rotations.")]
+    private KeyCode rotateSpeedBoostKeyCode = KeyCode.LeftShift;
     private float totalRun = 1.0f;
 
     void Update() {
         // Rotation Keyboard commands
         Vector3 rotation = GetBaseRotationInput();
-        if (Input.GetKey(KeyCode.LeftShift)) {
+        if (Input.GetKey(this.rotateSpeedBoostKeyCode)) {
             totalRun += Time.deltaTime;
             rotation *= totalRun * shiftAdd;
             rotation.x = Mathf.Clamp(rotation.x, -maxShift, maxShift);
@@ -48,9 +51,9 @@ public class RotationController : MonoBehaviour {
     private Vector3 GetBaseRotationInput() {
         Vector3 rotation = new Vector3();
 
-        if (Input.GetKey(rotateClockWiseKeyCode)) {
+        if (Input.GetKey(this.rotateClockWiseKeyCode)) {
             rotation = Vector3.back;
-        } else if (Input.GetKey(rotateCounterClockWiseKeyCode)) {
+        } else if (Input.GetKey(this.rotateCounterClockWiseKeyCode)) {
             rotation = Vector3.forward;
         }
 
