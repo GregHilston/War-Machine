@@ -17,13 +17,26 @@ public class PositionController : MonoBehaviour {
     [SerializeField]
     [Tooltip("Maximum speed when holding shift.")]
     private float maxShift = 100.0f;
-
+    [SerializeField]
+    [Tooltip("Key code to move position North.")]
+    private KeyCode movePositionNorthKeyCode = KeyCode.W;
+    [SerializeField]
+    [Tooltip("Key code to move position East.")]
+    private KeyCode movePositionEastKeyCode = KeyCode.A;
+    [SerializeField]
+    [Tooltip("Key code to move position South.")]
+    private KeyCode movePositionSouthKeyCode = KeyCode.S;
+    [SerializeField]
+    [Tooltip("Key code to move position West.")]
+    private KeyCode movePositionWestKeyCode = KeyCode.D;
+    [SerializeField]
+    [Tooltip("Key code to speed up position.")]
+    private KeyCode positionSpeedBoostKeyCode = KeyCode.LeftShift;
     private float totalRun = 1.0f;
-
     void Update() {
         // Translation Keyboard commands
         Vector3 translation = GetBaseTranslationInput();
-        if (Input.GetKey(KeyCode.LeftShift)) {
+        if (Input.GetKey(this.positionSpeedBoostKeyCode)) {
             totalRun += Time.deltaTime;
             translation *= totalRun * shiftAdd;
             translation.x = Mathf.Clamp(translation.x, -maxShift, maxShift);
@@ -43,23 +56,19 @@ public class PositionController : MonoBehaviour {
     private Vector3 GetBaseTranslationInput() {
         Vector3 translation = new Vector3();
 
-        // Forwards
-        if (Input.GetKey(KeyCode.W)) {
+        if (Input.GetKey(movePositionNorthKeyCode)) {
             translation += new Vector3(0, 1, 0);
-        }
+        } 
 
-        // Backwards
-        if (Input.GetKey(KeyCode.S)) {
-            translation += new Vector3(0, -1, 0);
-        }
-
-        // Left
-        if (Input.GetKey(KeyCode.A)) {
+        if (Input.GetKey(movePositionEastKeyCode)) {
             translation += new Vector3(-1, 0, 0);
-        }
+        } 
 
-        // Right
-        if (Input.GetKey(KeyCode.D)) {
+        if (Input.GetKey(movePositionSouthKeyCode)) {
+            translation += new Vector3(0, -1, 0);
+        } 
+
+        if (Input.GetKey(movePositionWestKeyCode)) {
             translation += new Vector3(1, 0, 0);
         }
 
