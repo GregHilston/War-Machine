@@ -7,8 +7,8 @@ public class BuildingPlacer : MonoBehaviour, IRespondable {
     [Tooltip("Which building we're actively placing")]
     public GameObject buildingToCreate;
     [SerializeField]
-    [Tooltip("Key to press down to cancel building")]
-    private string cancelBuildingKey = "escape";
+    [Tooltip("KeyCode to press down to cancel building")]
+    private KeyCode cancelBuildingKey = KeyCode.Escape;
     private bool isFollowing = false;
     private float ground = 0.02f;
 
@@ -62,8 +62,8 @@ public class BuildingPlacer : MonoBehaviour, IRespondable {
         buildingToCreate = null;
     }
 
-    public bool respond(string key) {
-        if (key == this.cancelBuildingKey && buildingToCreate != null) {
+    public bool respoundToKeyCodeDown(KeyCode keyCode) {
+        if (keyCode == this.cancelBuildingKey && buildingToCreate != null) {
             this.cancelBuilding();
 
             return true;

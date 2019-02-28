@@ -7,19 +7,19 @@ public interface IRespondable {
     /// Responds to a key being pressed.
     /// </summary>
     /// <returns>Whether this event was properly handled.</returns>
-    bool respond(string key);
+    bool respoundToKeyCodeDown(KeyCode key);
 }
 
 public class UserInputEventRouter : MonoBehaviour {
-    private static Dictionary<string, List<IRespondable>> keyToRespounderDictionary = new Dictionary<string, List<IRespondable>>();
+    private static Dictionary<KeyCode, List<IRespondable>> keyToRespounderDictionary = new Dictionary<KeyCode, List<IRespondable>>();
 
     void Update() {
-        foreach (KeyValuePair<string, List<IRespondable>> element in UserInputEventRouter.keyToRespounderDictionary) {
+        foreach (KeyValuePair<KeyCode, List<IRespondable>> element in UserInputEventRouter.keyToRespounderDictionary) {
             // Debug.Log("Checking if " + element.Key + " was pressed down");
 
             if (Input.GetKeyDown(element.Key)) {
                 for (int i = 0; i < element.Value.Count; i++) {
-                    if (element.Value[i].respond(element.Key)) {
+                    if (element.Value[i].respoundToKeyCodeDown(element.Key)) {
                         return;
                     }
                 }
@@ -27,18 +27,18 @@ public class UserInputEventRouter : MonoBehaviour {
         }
     }
 
-    public static void registerResponder(string key, IRespondable responsable) {
+    public static void registerResponder(KeyCode keyCode, IRespondable responsable) {
         // initial creation of a list
-        if (!UserInputEventRouter.keyToRespounderDictionary.ContainsKey(key)) {
-            UserInputEventRouter.keyToRespounderDictionary[key] = new List<IRespondable>();
+        if (!UserInputEventRouter.keyToRespounderDictionary.ContainsKey(keyCode)) {
+            UserInputEventRouter.keyToRespounderDictionary[keyCode] = new List<IRespondable>();
         }
 
-        UserInputEventRouter.keyToRespounderDictionary[key].Add(responsable);
+        UserInputEventRouter.keyToRespounderDictionary[keyCode].Add(responsable);
     }
 
-    public static void deregisterResponder(string key, IRespondable respondable) {
-        if (UserInputEventRouter.keyToRespounderDictionary[key] != null && UserInputEventRouter.keyToRespounderDictionary[key].Contains(respondable)) {
-            UserInputEventRouter.keyToRespounderDictionary[key].Remove(respondable);
+    public static void deregisterResponder(KeyCode keyCode, IRespondable respondable) {
+        if (UserInputEventRouter.keyToRespounderDictionary[keyCode] != null && UserInputEventRouter.keyToRespounderDictionary[keyCode].Contains(respondable)) {
+            UserInputEventRouter.keyToRespounderDictionary[keyCode].Remove(respondable);
         }
     }
 }

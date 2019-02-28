@@ -7,11 +7,11 @@ using UnityEngine;
 public class GameMenuController : MonoBehaviour, IRespondable {
     [SerializeField]
     [Tooltip("Key to press down to show menu")]
-    private string gameMenuKey = "escape";
+    private KeyCode gameMenuKeyCode = KeyCode.Escape;
     private bool isGameMenuBeingShown = false;
 
     public void Start() {
-        UserInputEventRouter.registerResponder(this.gameMenuKey, this);
+        UserInputEventRouter.registerResponder(this.gameMenuKeyCode, this);
     }
 
     private void toggleShowingGameMenuAndPausing() {
@@ -37,9 +37,9 @@ public class GameMenuController : MonoBehaviour, IRespondable {
         }
     }
 
-    public bool respond(string key) {
+    public bool respoundToKeyCodeDown(KeyCode keyCode) {
 
-        if (key == this.gameMenuKey) {
+        if (keyCode == this.gameMenuKeyCode) {
             this.toggleShowingGameMenuAndPausing();
 
             return true;
