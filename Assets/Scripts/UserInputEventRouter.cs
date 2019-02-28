@@ -18,14 +18,8 @@ public class UserInputEventRouter : MonoBehaviour {
             // Debug.Log("Checking if " + element.Key + " was pressed down");
 
             if (Input.GetKeyDown(element.Key)) {
-                Debug.Log(element.Key + " was pressed down");
-
                 for (int i = 0; i < element.Value.Count; i++) {
-                    Debug.Log("Checking IRespondable " + i);
-
                     if (element.Value[i].respond(element.Key)) {
-                        Debug.Log(i + " satisfied user input event " + element.Key);
-
                         return;
                     }
                 }

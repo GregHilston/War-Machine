@@ -2,12 +2,19 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BuildingPlacer : MonoBehaviour {
+public class BuildingPlacer : MonoBehaviour, IRespondable {
+    [SerializeField]
+    [Tooltip("Which building we're actively placing")]
     public GameObject buildingToCreate;
-
+    [SerializeField]
+    [Tooltip("Key to press down to cancel building")]
+    private string cancelBuildingKey = "escape";
     private bool isFollowing = false;
-
     private float ground = 0.02f;
+
+    public void Start() {
+        UserInputEventRouter.registerResponder(this.cancelBuildingKey, this);
+    }
 
     private RaycastHit RayFromCamera(Vector3 mousePosition, float rayLength) {
         RaycastHit hit;
@@ -47,5 +54,21 @@ public class BuildingPlacer : MonoBehaviour {
 
             buildingToCreate.transform.position = new Vector3(mousePosition.x, ground, mousePosition.z); ;
         }
+    }
+
+    private void cancelBuilding() {
+        isFollowing = false;
+        SimplePool.Despawn(buildingToCreate);
+        buildingToCreate = null;
+    }
+
+    public bool respond(string key) {
+        if (key == this.cancelBuildingKey && buildingToCreate != null) {
+            this.cancelBuilding();
+
+            return true;
+        }
+
+        return false;
     }
 }

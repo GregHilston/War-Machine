@@ -20,7 +20,6 @@ public class GameMenuController : MonoBehaviour, IRespondable {
         var pauseable = GetComponent<Pausable>();
         if (pauseable != null) {
             if (this.isGameMenuBeingShown) {
-                Debug.Log("Attemping to pause game!");
 
                 pauseable.PauseGame();
             } else {
@@ -31,7 +30,6 @@ public class GameMenuController : MonoBehaviour, IRespondable {
         var gameMenuable = GetComponent<GameMenuable>();
         if (gameMenuable != null) {
             if (this.isGameMenuBeingShown) {
-                Debug.Log("Attemping to show game menu!");
                 gameMenuable.ShowGameMenu();
             } else {
                 gameMenuable.HideGameMenu();
@@ -40,16 +38,13 @@ public class GameMenuController : MonoBehaviour, IRespondable {
     }
 
     public bool respond(string key) {
-        Debug.Log("Attempting to respond to " + key);
 
         if (key == this.gameMenuKey) {
             this.toggleShowingGameMenuAndPausing();
 
-            Debug.Log("Succeeded!");
             return true;
         }
 
-        Debug.Log("Failed!");
         return false;
     }
 }
