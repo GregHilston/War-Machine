@@ -15,21 +15,25 @@ public class UserInputEventRouter : MonoBehaviour {
 
     void Update() {
         foreach (KeyValuePair<string, List<IRespondable>> element in UserInputEventRouter.keyToRespounderDictionary) {
-            Debug.Log("Checking if " + element.Key + " was pressed down");
+            // Debug.Log("Checking if " + element.Key + " was pressed down");
 
             if (Input.GetKeyDown(element.Key)) {
                 Debug.Log(element.Key + " was pressed down");
 
                 for (int i = 0; i < element.Value.Count; i++) {
+                    Debug.Log("Checking IRespondable " + i);
+
                     if (element.Value[i].respond(element.Key)) {
-                        break;
+                        Debug.Log(i + " satisfied user input event " + element.Key);
+
+                        return;
                     }
                 }
             }
         }
     }
 
-    public void registerResponder(string key, IRespondable responsable) {
+    public static void registerResponder(string key, IRespondable responsable) {
         // initial creation of a list
         if (!UserInputEventRouter.keyToRespounderDictionary.ContainsKey(key)) {
             UserInputEventRouter.keyToRespounderDictionary[key] = new List<IRespondable>();
@@ -38,7 +42,7 @@ public class UserInputEventRouter : MonoBehaviour {
         UserInputEventRouter.keyToRespounderDictionary[key].Add(responsable);
     }
 
-    public void deregisterResponder(string key, IRespondable respondable) {
+    public static void deregisterResponder(string key, IRespondable respondable) {
         if (UserInputEventRouter.keyToRespounderDictionary[key] != null && UserInputEventRouter.keyToRespounderDictionary[key].Contains(respondable)) {
             UserInputEventRouter.keyToRespounderDictionary[key].Remove(respondable);
         }

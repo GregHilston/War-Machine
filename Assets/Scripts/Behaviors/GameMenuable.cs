@@ -8,10 +8,12 @@ public class GameMenuable : MonoBehaviour {
     private GameObject gameMenuParentObject;
 
     public void ShowGameMenu() {
+        Debug.Log("Showing Game Menu");
         gameMenuParentObject.SetActive(true);
     }
 
     public void HideGameMenu() {
+        Debug.Log("Hiding Game Menu");
         gameMenuParentObject.SetActive(false);
     }
 }

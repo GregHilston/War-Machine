@@ -4,7 +4,6 @@ using UnityEngine;
 
 [RequireComponent(typeof(GameMenuable))]
 [RequireComponent(typeof(Pausable))]
-[RequireComponent(typeof(UserInputEventRouter))]
 public class GameMenuController : MonoBehaviour, IRespondable {
     [SerializeField]
     [Tooltip("Key to press down to show menu")]
@@ -12,11 +11,7 @@ public class GameMenuController : MonoBehaviour, IRespondable {
     private bool isGameMenuBeingShown = false;
 
     public void Start() {
-        var userInputEventRouter = GetComponent<UserInputEventRouter>();
-
-        if (userInputEventRouter != null) {
-            userInputEventRouter.registerResponder(this.gameMenuKey, this);
-        }
+        UserInputEventRouter.registerResponder(this.gameMenuKey, this);
     }
 
     private void toggleShowingGameMenuAndPausing() {
@@ -25,6 +20,8 @@ public class GameMenuController : MonoBehaviour, IRespondable {
         var pauseable = GetComponent<Pausable>();
         if (pauseable != null) {
             if (this.isGameMenuBeingShown) {
+                Debug.Log("Attemping to pause game!");
+
                 pauseable.PauseGame();
             } else {
                 pauseable.ContinueGame();
@@ -34,7 +31,7 @@ public class GameMenuController : MonoBehaviour, IRespondable {
         var gameMenuable = GetComponent<GameMenuable>();
         if (gameMenuable != null) {
             if (this.isGameMenuBeingShown) {
-                Debug.Log("here");
+                Debug.Log("Attemping to show game menu!");
                 gameMenuable.ShowGameMenu();
             } else {
                 gameMenuable.HideGameMenu();
