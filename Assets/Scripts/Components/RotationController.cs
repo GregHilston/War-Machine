@@ -7,7 +7,7 @@ using UnityEngine;
 /// 
 /// Based On: https://gist.github.com/RyanBreaker/932dc35302787d2f39df6b614a50c0c9 
 /// </summary>
-public class RotationController : MonoBehaviour {
+public class RotationController : MonoBehaviour, IRespondable {
     [SerializeField]
     [Tooltip("Regular speed to move rotation.")]
     private float mainSpeed = 10.0f;
@@ -28,17 +28,34 @@ public class RotationController : MonoBehaviour {
     private KeyCode rotateSpeedBoostKeyCode = KeyCode.LeftShift;
     private float totalRun = 1.0f;
 
-    void Update() {
-        // Rotation Keyboard commands
-        Vector3 rotation = GetBaseRotationInput();
+    void Start() {
+        UserInputEventRouter.registerResponder(this.rotateClockWiseKeyCode, this);
+        UserInputEventRouter.registerResponder(this.rotateCounterClockWiseKeyCode, this);
+    }
+
+    // Returns the basic values, if it's 0 than its not active.
+    private Vector3 GetBaseRotationInput(KeyCode keyCode) {
+        Vector3 rotation = new Vector3();
+
+        if (keyCode == this.rotateClockWiseKeyCode) {
+            rotation = Vector3.back;
+        } else if (keyCode == this.rotateCounterClockWiseKeyCode) {
+            rotation = Vector3.forward;
+        }
+
+        return rotation;
+    }
+
+    void respoundToKeyCodeDown(KeyCode keyCode) {
+        Vector3 rotation = GetBaseRotationInput(keyCode);
+
         if (Input.GetKey(this.rotateSpeedBoostKeyCode)) {
             totalRun += Time.deltaTime;
             rotation *= totalRun * shiftAdd;
             rotation.x = Mathf.Clamp(rotation.x, -maxShift, maxShift);
             rotation.y = Mathf.Clamp(rotation.y, -maxShift, maxShift);
             rotation.z = Mathf.Clamp(rotation.z, -maxShift, maxShift);
-        }
-        else {
+        } else {
             totalRun = Mathf.Clamp(totalRun * 0.5f, 1f, 1000f);
             rotation *= mainSpeed;
         }
@@ -47,16 +64,9 @@ public class RotationController : MonoBehaviour {
         transform.Rotate(rotation);
     }
 
-    // Returns the basic values, if it's 0 than its not active.
-    private Vector3 GetBaseRotationInput() {
-        Vector3 rotation = new Vector3();
+    bool IRespondable.respoundToKeyCodeDown(KeyCode keyCode) {
+        respoundToKeyCodeDown(keyCode);
 
-        if (Input.GetKey(this.rotateClockWiseKeyCode)) {
-            rotation = Vector3.back;
-        } else if (Input.GetKey(this.rotateCounterClockWiseKeyCode)) {
-            rotation = Vector3.forward;
-        }
-
-        return rotation;
+        return true;
     }
 }

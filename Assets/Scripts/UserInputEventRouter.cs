@@ -7,7 +7,7 @@ public interface IRespondable {
     /// Responds to a key being pressed.
     /// </summary>
     /// <returns>Whether this event was properly handled.</returns>
-    bool respoundToKeyCodeDown(KeyCode key);
+    bool respoundToKeyCodeDown(KeyCode keyCode);
 }
 
 public class UserInputEventRouter : MonoBehaviour {
