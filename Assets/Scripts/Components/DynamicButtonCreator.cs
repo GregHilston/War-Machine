@@ -80,8 +80,6 @@ public class DynamicButtonCreator : MonoBehaviour {
     void BuildABuildingButtonClicked(int buttonNo) {
         string filePath = "Prefabs/Player Buildings/" + this.playerBuildingPrefabs[buttonNo];
         GameObject buildingToCreate = (GameObject)Resources.Load(filePath);
-        Debug.Log("filePath: " + filePath);
-        Debug.Log(buildingToCreate.name);
         this.buildingPlacer.buildingToCreate = buildingToCreate;
     }
 }
