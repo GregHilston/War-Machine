@@ -11,7 +11,7 @@ public class GameMenuController : MonoBehaviour, IRespondable {
     private bool isGameMenuBeingShown = false;
 
     public void Start() {
-        UserInputEventRouter.registerResponder(this.gameMenuKeyCode, this);
+        UserInputEventRouter.registerResponder(this.gameMenuKeyCode, KeyEvent.Down, this);
     }
 
     private void toggleShowingGameMenuAndPausing() {
@@ -37,8 +37,7 @@ public class GameMenuController : MonoBehaviour, IRespondable {
         }
     }
 
-    public bool respoundToKeyCodeDown(KeyCode keyCode) {
-
+    public bool respoundToKeyCodeEvent(KeyCode keyCode, KeyEvent keyEvent) {
         if (keyCode == this.gameMenuKeyCode) {
             this.toggleShowingGameMenuAndPausing();
 

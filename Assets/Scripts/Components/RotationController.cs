@@ -29,8 +29,8 @@ public class RotationController : MonoBehaviour, IRespondable {
     private float totalRun = 1.0f;
 
     void Start() {
-        UserInputEventRouter.registerResponder(this.rotateClockWiseKeyCode, this);
-        UserInputEventRouter.registerResponder(this.rotateCounterClockWiseKeyCode, this);
+        UserInputEventRouter.registerResponder(this.rotateClockWiseKeyCode, KeyEvent.Pressed, this);
+        UserInputEventRouter.registerResponder(this.rotateCounterClockWiseKeyCode, KeyEvent.Pressed, this);
     }
 
     // Returns the basic values, if it's 0 than its not active.
@@ -64,7 +64,7 @@ public class RotationController : MonoBehaviour, IRespondable {
         transform.Rotate(rotation);
     }
 
-    bool IRespondable.respoundToKeyCodeDown(KeyCode keyCode) {
+    bool IRespondable.respoundToKeyCodeEvent(KeyCode keyCode, KeyEvent keyEvent) {
         respoundToKeyCodeDown(keyCode);
 
         return true;

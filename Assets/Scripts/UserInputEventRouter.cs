@@ -2,43 +2,75 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum KeyEvent {
+    Down,
+    Pressed
+}
+
 public interface IRespondable {
     /// <summary>
-    /// Responds to a key being pressed.
+    /// Responds to a key event.
     /// </summary>
     /// <returns>Whether this event was properly handled.</returns>
-    bool respoundToKeyCodeDown(KeyCode keyCode);
+    /// 
+    bool respoundToKeyCodeEvent(KeyCode keyCode, KeyEvent keyEvent);
 }
 
 public class UserInputEventRouter : MonoBehaviour {
-    private static Dictionary<KeyCode, List<IRespondable>> keyToRespounderDictionary = new Dictionary<KeyCode, List<IRespondable>>();
+    private static Dictionary<KeyCode, Dictionary<KeyEvent, List<IRespondable>>> keyToRespounderDictionary = new Dictionary<KeyCode, Dictionary<KeyEvent, List<IRespondable>>>();
 
     void Update() {
-        foreach (KeyValuePair<KeyCode, List<IRespondable>> element in UserInputEventRouter.keyToRespounderDictionary) {
-            // Debug.Log("Checking if " + element.Key + " was pressed down");
-
-            if (Input.GetKeyDown(element.Key)) {
-                for (int i = 0; i < element.Value.Count; i++) {
-                    if (element.Value[i].respoundToKeyCodeDown(element.Key)) {
-                        return;
-                    }
+        foreach (KeyValuePair<KeyCode, Dictionary<KeyEvent, List<IRespondable>>> keyCodeElement in UserInputEventRouter.keyToRespounderDictionary) {
+            foreach (KeyValuePair<KeyEvent, List<IRespondable>> keyEventElement in UserInputEventRouter.keyToRespounderDictionary[keyCodeElement.Key]) {
+                switch (keyEventElement.Key) {
+                    case KeyEvent.Down:
+                        if (Input.GetKeyDown(keyCodeElement.Key)) {
+                            for (int i = 0; i < keyEventElement.Value.Count; i++) {
+                                if (keyEventElement.Value[i].respoundToKeyCodeEvent(keyCodeElement.Key, keyEventElement.Key)) {
+                                    return;
+                                }
+                            }
+                        }
+                        break;
+                    case KeyEvent.Pressed:
+                        if (Input.GetKey(keyCodeElement.Key)) {
+                            for (int i = 0; i < keyEventElement.Value.Count; i++) {
+                                if (keyEventElement.Value[i].respoundToKeyCodeEvent(keyCodeElement.Key, keyEventElement.Key)) {
+                                    return;
+                                }
+                            }
+                        }
+                        break;
                 }
             }
         }
     }
 
-    public static void registerResponder(KeyCode keyCode, IRespondable responsable) {
-        // initial creation of a list
+    public static void registerResponder(KeyCode keyCode, KeyEvent keyEvent, IRespondable respondable) {
+        // if this is the first responder to register this key
         if (!UserInputEventRouter.keyToRespounderDictionary.ContainsKey(keyCode)) {
-            UserInputEventRouter.keyToRespounderDictionary[keyCode] = new List<IRespondable>();
+            UserInputEventRouter.keyToRespounderDictionary[keyCode] = new Dictionary<KeyEvent, List<IRespondable>>();
+
+            // if this is the first responder to register this key event
+            if (!UserInputEventRouter.keyToRespounderDictionary[keyCode].ContainsKey(keyEvent)) {
+                UserInputEventRouter.keyToRespounderDictionary[keyCode][keyEvent] = new List<IRespondable>();
+            }
         }
 
-        UserInputEventRouter.keyToRespounderDictionary[keyCode].Add(responsable);
+        UserInputEventRouter.keyToRespounderDictionary[keyCode][keyEvent].Add(respondable);
     }
 
-    public static void deregisterResponder(KeyCode keyCode, IRespondable respondable) {
-        if (UserInputEventRouter.keyToRespounderDictionary[keyCode] != null && UserInputEventRouter.keyToRespounderDictionary[keyCode].Contains(respondable)) {
-            UserInputEventRouter.keyToRespounderDictionary[keyCode].Remove(respondable);
+    public static void deregisterResponder(KeyCode keyCode, KeyEvent keyEvent, IRespondable respondable) {
+        // if we've seen this keyCode registered before
+        if (UserInputEventRouter.keyToRespounderDictionary[keyCode] != null) {
+            // if we've seen this keyEvent registered before
+            if (UserInputEventRouter.keyToRespounderDictionary[keyCode][keyEvent] != null) {
+                // if we've seen this respondable before
+                if (UserInputEventRouter.keyToRespounderDictionary[keyCode][keyEvent].Contains(respondable)) {
+                    UserInputEventRouter.keyToRespounderDictionary[keyCode][keyEvent].Remove(respondable);
+
+                }
+            }
         }
     }
 }

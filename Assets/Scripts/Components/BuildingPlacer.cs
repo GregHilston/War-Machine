@@ -13,7 +13,7 @@ public class BuildingPlacer : MonoBehaviour, IRespondable {
     private float ground = 0.02f;
 
     public void Start() {
-        UserInputEventRouter.registerResponder(this.cancelBuildingKey, this);
+        UserInputEventRouter.registerResponder(this.cancelBuildingKey, KeyEvent.Down, this);
     }
 
     private RaycastHit RayFromCamera(Vector3 mousePosition, float rayLength) {
@@ -62,7 +62,7 @@ public class BuildingPlacer : MonoBehaviour, IRespondable {
         buildingToCreate = null;
     }
 
-    public bool respoundToKeyCodeDown(KeyCode keyCode) {
+    public bool respoundToKeyCodeEvent(KeyCode keyCode, KeyEvent keyEvent) {
         if (keyCode == this.cancelBuildingKey && buildingToCreate != null) {
             this.cancelBuilding();
 
