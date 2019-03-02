@@ -25,7 +25,7 @@ public class UserInputEventRouter : MonoBehaviour {
                 switch (keyEventElement.Key) {
                     case KeyEvent.Down:
                         if (Input.GetKeyDown(keyCodeElement.Key)) {
-                            for (int i = 0; i < keyEventElement.Value.Count; i++) {
+                            for (int i = keyEventElement.Value.Count - 1; i >= 0; i--) { // backwards to ensure the last to register gets the first chance to respond
                                 if (keyEventElement.Value[i].respoundToKeyCodeEvent(keyCodeElement.Key, keyEventElement.Key)) {
                                     return;
                                 }
@@ -34,7 +34,7 @@ public class UserInputEventRouter : MonoBehaviour {
                         break;
                     case KeyEvent.Pressed:
                         if (Input.GetKey(keyCodeElement.Key)) {
-                            for (int i = 0; i < keyEventElement.Value.Count; i++) {
+                            for (int i = keyEventElement.Value.Count - 1; i >= 0; i--) { // backwards to ensure the last to register gets the first chance to respond
                                 if (keyEventElement.Value[i].respoundToKeyCodeEvent(keyCodeElement.Key, keyEventElement.Key)) {
                                     return;
                                 }

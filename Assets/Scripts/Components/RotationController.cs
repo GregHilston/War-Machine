@@ -46,7 +46,7 @@ public class RotationController : MonoBehaviour, IRespondable {
         return rotation;
     }
 
-    void respoundToKeyCodeDown(KeyCode keyCode) {
+    bool IRespondable.respoundToKeyCodeEvent(KeyCode keyCode, KeyEvent keyEvent) {
         Vector3 rotation = GetBaseRotationInput(keyCode);
 
         if (Input.GetKey(this.rotateSpeedBoostKeyCode)) {
@@ -62,10 +62,6 @@ public class RotationController : MonoBehaviour, IRespondable {
 
         rotation *= Time.deltaTime;
         transform.Rotate(rotation);
-    }
-
-    bool IRespondable.respoundToKeyCodeEvent(KeyCode keyCode, KeyEvent keyEvent) {
-        respoundToKeyCodeDown(keyCode);
 
         return true;
     }

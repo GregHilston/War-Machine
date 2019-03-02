@@ -12,10 +12,6 @@ public class BuildingPlacer : MonoBehaviour, IRespondable {
     private bool isFollowing = false;
     private float ground = 0.02f;
 
-    public void Start() {
-        UserInputEventRouter.registerResponder(this.cancelBuildingKey, KeyEvent.Down, this);
-    }
-
     private RaycastHit RayFromCamera(Vector3 mousePosition, float rayLength) {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
@@ -33,13 +29,18 @@ public class BuildingPlacer : MonoBehaviour, IRespondable {
     void Update() {
         // Initial Creation
         if (buildingToCreate != null && isFollowing == false) {
+            UserInputEventRouter.registerResponder(this.cancelBuildingKey, KeyEvent.Down, this);
+
             buildingToCreate = Instantiate(buildingToCreate, transform.position, transform.rotation);
+            buildingToCreate.AddComponent<RotationController>(); // allowing us to rotate this unbuilt building
 
             isFollowing = true;
         }
 
         // Building
         if (Input.GetButtonDown("Fire1") && buildingToCreate != null) {
+            Destroy(buildingToCreate.GetComponent<RotationController>()); // disabling the ability to rotate this building, as its built now
+
             isFollowing = false;
             buildingToCreate = null;
         }
@@ -60,6 +61,8 @@ public class BuildingPlacer : MonoBehaviour, IRespondable {
 
     public bool respoundToKeyCodeEvent(KeyCode keyCode, KeyEvent keyEvent) {
         if (keyCode == this.cancelBuildingKey && buildingToCreate != null) {
+            UserInputEventRouter.deregisterResponder(this.cancelBuildingKey, KeyEvent.Down, this); 
+
             this.cancelBuilding();
 
             return true;
