@@ -8,6 +8,8 @@ using UnityEngine;
 /// Based On: https://gist.github.com/RyanBreaker/932dc35302787d2f39df6b614a50c0c9 
 /// </summary>
 public class RotationController : MonoBehaviour, IRespondable {
+    public enum ThreeDAxis { X, Y, Z };
+
     [SerializeField]
     [Tooltip("Regular speed to move rotation.")]
     private float mainSpeed = 10.0f;
@@ -27,10 +29,17 @@ public class RotationController : MonoBehaviour, IRespondable {
     [Tooltip("Key code to speed up rotations.")]
     private KeyCode rotateSpeedBoostKeyCode = KeyCode.LeftShift;
     private float totalRun = 1.0f;
+    [Tooltip("Axis to rotate on.")]
+    public ThreeDAxis axisToRotateOn = ThreeDAxis.Z;
 
     void Start() {
         UserInputEventRouter.registerResponder(this.rotateClockWiseKeyCode, KeyEvent.Pressed, this);
         UserInputEventRouter.registerResponder(this.rotateCounterClockWiseKeyCode, KeyEvent.Pressed, this);
+    }
+
+    void OnDestroy() {
+        UserInputEventRouter.deregisterResponder(this.rotateClockWiseKeyCode, KeyEvent.Pressed, this);
+        UserInputEventRouter.deregisterResponder(this.rotateCounterClockWiseKeyCode, KeyEvent.Pressed, this);
     }
 
     // Returns the basic values, if it's 0 than its not active.
@@ -38,9 +47,29 @@ public class RotationController : MonoBehaviour, IRespondable {
         Vector3 rotation = new Vector3();
 
         if (keyCode == this.rotateClockWiseKeyCode) {
-            rotation = Vector3.back;
+            switch(this.axisToRotateOn) {
+                case ThreeDAxis.X:
+                    rotation = Vector3.left;
+                    break;
+                case ThreeDAxis.Y:
+                    rotation = Vector3.down;
+                    break;
+                case ThreeDAxis.Z:
+                    rotation = Vector3.back;
+                    break;
+            }
         } else if (keyCode == this.rotateCounterClockWiseKeyCode) {
-            rotation = Vector3.forward;
+            switch (this.axisToRotateOn) {
+                case ThreeDAxis.X:
+                    rotation = Vector3.right;
+                    break;
+                case ThreeDAxis.Y:
+                    rotation = Vector3.up;
+                    break;
+                case ThreeDAxis.Z:
+                    rotation = Vector3.forward;
+                    break;
+            }
         }
 
         return rotation;
