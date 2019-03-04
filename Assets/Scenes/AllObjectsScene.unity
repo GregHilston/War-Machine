@@ -505,6 +505,9 @@ MonoBehaviour:
   mainSpeed: 10
   shiftAdd: 25
   maxShift: 100
+  rotateClockWiseKeyCode: 101
+  rotateCounterClockWiseKeyCode: 113
+  rotateSpeedBoostKeyCode: 304
 --- !u!114 &257085429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,6 +523,11 @@ MonoBehaviour:
   mainSpeed: 10
   shiftAdd: 25
   maxShift: 100
+  movePositionNorthKeyCode: 119
+  movePositionEastKeyCode: 97
+  movePositionSouthKeyCode: 115
+  movePositionWestKeyCode: 100
+  positionSpeedBoostKeyCode: 304
 --- !u!81 &257085430
 AudioListener:
   m_ObjectHideFlags: 0
@@ -577,13 +585,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 257085426}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -5.16, y: 15.76, z: -12.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &285329203 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5549287773667657056, guid: fd6601a302d87427891d8ec97bcfe443,
@@ -1785,6 +1793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingToCreate: {fileID: 0}
+  cancelBuildingKey: 27
 --- !u!1001 &942641785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2612,7 +2621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78309b12a1004b97a763d4fbd0a85f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameMenuKey: escape
+  gameMenuKeyCode: 27
 --- !u!4 &1430730794
 Transform:
   m_ObjectHideFlags: 0
