@@ -34,12 +34,6 @@ public class BuildingPlacer : MonoBehaviour, IRespondable {
             buildingToCreate = Instantiate(buildingToCreate, transform.position, transform.rotation);
             buildingToCreate.AddComponent<RotationController>(); // allowing us to rotate this unbuilt building
 
-            RotationController rotationController = buildingToCreate.GetComponent<RotationController>();
-
-            if (rotationController != null) {
-                rotationController.axisToRotateOn = RotationController.ThreeDAxis.Y; // because our prefabs use the true X, Y, Z axis notion unlike our camera
-            }
-           
             isFollowing = true;
         }
 

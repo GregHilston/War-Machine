@@ -30,7 +30,7 @@ public class RotationController : MonoBehaviour, IRespondable {
     private KeyCode rotateSpeedBoostKeyCode = KeyCode.LeftShift;
     private float totalRun = 1.0f;
     [Tooltip("Axis to rotate on.")]
-    public ThreeDAxis axisToRotateOn = ThreeDAxis.Z;
+    public ThreeDAxis axisToRotateOn = ThreeDAxis.Y; // the Unity default for up and down
 
     void Start() {
         UserInputEventRouter.registerResponder(this.rotateClockWiseKeyCode, KeyEvent.Pressed, this);
