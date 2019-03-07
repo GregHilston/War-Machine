@@ -16,27 +16,22 @@ PrefabInstance:
         type: 3}
       propertyPath: objectToSpawn
       value: 
-      objectReference: {fileID: 6541329804399880305, guid: a71b33c85089c1f4882b67122769c38e,
+      objectReference: {fileID: 6458060990180301219, guid: 194f201663f675447b0448bf9cb003e7,
         type: 3}
-    - target: {fileID: 5786098164399816306, guid: 8ab7515fb9e4de34ebede372cf458285,
-        type: 3}
-      propertyPath: startAt
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1977016235626490188, guid: 8ab7515fb9e4de34ebede372cf458285,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.56
+      value: -9.843877
       objectReference: {fileID: 0}
     - target: {fileID: 1977016235626490188, guid: 8ab7515fb9e4de34ebede372cf458285,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.688
+      value: 3.3391362e-16
       objectReference: {fileID: 0}
     - target: {fileID: 1977016235626490188, guid: 8ab7515fb9e4de34ebede372cf458285,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.734
+      value: -15.038134
       objectReference: {fileID: 0}
     - target: {fileID: 1977016235626490188, guid: 8ab7515fb9e4de34ebede372cf458285,
         type: 3}
