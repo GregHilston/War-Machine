@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BuildingPlacer : MonoBehaviour, IRespondable {
+public class BuildingPlacer : MonoBehaviour, IKeyCodeEventRespondable {
     [SerializeField]
     [Tooltip("Which building we're actively placing")]
     public GameObject buildingToCreate;
@@ -29,7 +29,7 @@ public class BuildingPlacer : MonoBehaviour, IRespondable {
     void Update() {
         // Initial Creation
         if (buildingToCreate != null && isFollowing == false) {
-            UserInputEventRouter.registerResponder(this.cancelBuildingKey, KeyEvent.Down, this);
+            UserInputEventRouter.registerKeyboardResponder(this.cancelBuildingKey, KeyEvent.Down, this);
 
             buildingToCreate = Instantiate(buildingToCreate, transform.position, transform.rotation);
             buildingToCreate.AddComponent<RotationController>(); // allowing us to rotate this unbuilt building
@@ -61,7 +61,7 @@ public class BuildingPlacer : MonoBehaviour, IRespondable {
 
     public bool respoundToKeyCodeEvent(KeyCode keyCode, KeyEvent keyEvent) {
         if (keyCode == this.cancelBuildingKey && buildingToCreate != null) {
-            UserInputEventRouter.deregisterResponder(this.cancelBuildingKey, KeyEvent.Down, this); 
+            UserInputEventRouter.deregisterKeyboardResponder(this.cancelBuildingKey, KeyEvent.Down, this); 
 
             this.cancelBuilding();
 

@@ -7,7 +7,7 @@ using UnityEngine;
 /// 
 /// Based On: https://gist.github.com/RyanBreaker/932dc35302787d2f39df6b614a50c0c9 
 /// </summary>
-public class RotationController : MonoBehaviour, IRespondable {
+public class RotationController : MonoBehaviour, IKeyCodeEventRespondable {
     public enum ThreeDAxis { X, Y, Z };
 
     [SerializeField]
@@ -33,13 +33,13 @@ public class RotationController : MonoBehaviour, IRespondable {
     public ThreeDAxis axisToRotateOn = ThreeDAxis.Y; // the Unity default for up and down
 
     void Start() {
-        UserInputEventRouter.registerResponder(this.rotateClockWiseKeyCode, KeyEvent.Pressed, this);
-        UserInputEventRouter.registerResponder(this.rotateCounterClockWiseKeyCode, KeyEvent.Pressed, this);
+        UserInputEventRouter.registerKeyboardResponder(this.rotateClockWiseKeyCode, KeyEvent.Pressed, this);
+        UserInputEventRouter.registerKeyboardResponder(this.rotateCounterClockWiseKeyCode, KeyEvent.Pressed, this);
     }
 
     void OnDestroy() {
-        UserInputEventRouter.deregisterResponder(this.rotateClockWiseKeyCode, KeyEvent.Pressed, this);
-        UserInputEventRouter.deregisterResponder(this.rotateCounterClockWiseKeyCode, KeyEvent.Pressed, this);
+        UserInputEventRouter.deregisterKeyboardResponder(this.rotateClockWiseKeyCode, KeyEvent.Pressed, this);
+        UserInputEventRouter.deregisterKeyboardResponder(this.rotateCounterClockWiseKeyCode, KeyEvent.Pressed, this);
     }
 
     // Returns the basic values, if it's 0 than its not active.
@@ -75,7 +75,7 @@ public class RotationController : MonoBehaviour, IRespondable {
         return rotation;
     }
 
-    bool IRespondable.respoundToKeyCodeEvent(KeyCode keyCode, KeyEvent keyEvent) {
+    bool IKeyCodeEventRespondable.respoundToKeyCodeEvent(KeyCode keyCode, KeyEvent keyEvent) {
         Vector3 rotation = GetBaseRotationInput(keyCode);
 
         if (Input.GetKey(this.rotateSpeedBoostKeyCode)) {

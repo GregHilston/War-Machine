@@ -4,14 +4,14 @@ using UnityEngine;
 
 [RequireComponent(typeof(GameMenuable))]
 [RequireComponent(typeof(Pausable))]
-public class GameMenuController : MonoBehaviour, IRespondable {
+public class GameMenuController : MonoBehaviour, IKeyCodeEventRespondable {
     [SerializeField]
     [Tooltip("Key to press down to show menu")]
     private KeyCode gameMenuKeyCode = KeyCode.Escape;
     private bool isGameMenuBeingShown = false;
 
     public void Start() {
-        UserInputEventRouter.registerResponder(this.gameMenuKeyCode, KeyEvent.Down, this);
+        UserInputEventRouter.registerKeyboardResponder(this.gameMenuKeyCode, KeyEvent.Down, this);
     }
 
     private void toggleShowingGameMenuAndPausing() {
