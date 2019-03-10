@@ -34,6 +34,8 @@ public class BuildingPlacer : MonoBehaviour, IKeyCodeEventRespondable {
             buildingToCreate = Instantiate(buildingToCreate, transform.position, transform.rotation);
             buildingToCreate.AddComponent<RotationController>(); // allowing us to rotate this unbuilt building
 
+            buildingToCreate.transform.parent = GameObject.Find("UserBuildings").transform;
+
             isFollowing = true;
         }
 
