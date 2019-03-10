@@ -11,9 +11,13 @@ public class ChildDestroyer : MonoBehaviour {
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 100)) {
-            if (GameObject.ReferenceEquals(hit.collider.GetComponentInParent<GameObject>(), this.deleteOnlyChildrenOf)) {
-                Debug.Log("Found a child building!");
+        if (Input.GetButtonDown("Fire1")) {
+            if (Physics.Raycast(ray, out hit, 100)) {
+                if (GameObject.ReferenceEquals(hit.collider.GetComponentInParent<GameObject>(), this.deleteOnlyChildrenOf)) {
+                    Debug.Log("Found a child building!");
+                } else {
+                    Debug.Log("Did not find a child building!");
+                }
             }
         }
     }

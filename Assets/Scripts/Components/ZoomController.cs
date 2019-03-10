@@ -40,8 +40,6 @@ public class ZoomController : MonoBehaviour, IMouseEventRespondable {
             fov = Mathf.Clamp(fov, minFov, maxFov);
             Camera.main.fieldOfView = fov;
 
-            Debug.Log("respoundToMouseEvent mouseAxis " + mouseAxis + " delta " + delta);
-
             return true;
         }
 
