@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChildDestroyer : MonoBehaviour {
+public class ChildDestroyer : MonoBehaviour, IKeyCodeEventRespondable {
+    [SerializeField]
+    [Tooltip("KeyCode to press down to cancel destroying")]
+    private KeyCode cancelDestroyingKey = KeyCode.Escape;
     [SerializeField]
     [Tooltip("Only destroy children of this object.")]
     GameObject deleteOnlyChildrenOf;
@@ -12,6 +15,8 @@ public class ChildDestroyer : MonoBehaviour {
 
     public void GrantPermission() {
         this.permissionToDestroy = true;
+
+        UserInputEventRouter.registerKeyboardResponder(this.cancelDestroyingKey, KeyEvent.Down, this);
     }
 
     void Update() {
@@ -29,7 +34,7 @@ public class ChildDestroyer : MonoBehaviour {
                 if (GameObject.ReferenceEquals(hit.collider.transform.root.gameObject, this.deleteOnlyChildrenOf)) {
                     Debug.Log("Found a child building!");
 
-                    foreach (Transform child in hit.collider.transform.root.gameObject.transform) {
+                    foreach (Transform child in hit.collider.transform) {
                         GameObject.Destroy(child.gameObject);
                     }
 
@@ -39,5 +44,17 @@ public class ChildDestroyer : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public bool respoundToKeyCodeEvent(KeyCode keyCode, KeyEvent keyEvent) {
+        if (keyCode == this.cancelDestroyingKey) {
+            UserInputEventRouter.deregisterKeyboardResponder(this.cancelDestroyingKey, KeyEvent.Down, this);
+
+            this.permissionToDestroy = false;
+
+            return true;
+        }
+
+        return false;
     }
 }
