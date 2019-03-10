@@ -28,6 +28,11 @@ public class ChildDestroyer : MonoBehaviour {
 
                 if (GameObject.ReferenceEquals(hit.collider.transform.root.gameObject, this.deleteOnlyChildrenOf)) {
                     Debug.Log("Found a child building!");
+
+                    foreach (Transform child in hit.collider.transform.root.gameObject.transform) {
+                        GameObject.Destroy(child.gameObject);
+                    }
+
                     Destroy(hit.collider.gameObject);
                 } else {
                     Debug.Log("Did not find a child building!");
