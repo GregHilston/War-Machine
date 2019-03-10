@@ -13,7 +13,7 @@ public class ChildDestroyer : MonoBehaviour {
 
         if (Input.GetButtonDown("Fire1")) {
             if (Physics.Raycast(ray, out hit, 100)) {
-                if (GameObject.ReferenceEquals(hit.collider.GetComponentInParent<GameObject>(), this.deleteOnlyChildrenOf)) {
+                if (GameObject.ReferenceEquals(hit.collider.transform.root.gameObject, this.deleteOnlyChildrenOf)) {
                     Debug.Log("Found a child building!");
                 } else {
                     Debug.Log("Did not find a child building!");
