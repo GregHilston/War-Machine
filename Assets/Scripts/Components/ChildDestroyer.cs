@@ -23,24 +23,19 @@ public class ChildDestroyer : MonoBehaviour, IKeyCodeEventRespondable {
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        Debug.Log("Update");
-
         if (permissionToDestroy && Input.GetButtonDown("Fire1")) {
-            Debug.Log("Fire1");
-
             if (Physics.Raycast(ray, out hit, 1000)) {
-                Debug.Log("Raycast");
+                Debug.Log("Clicked on " + hit.collider.name);
+                Debug.Log("Whose parent is " + hit.collider.transform.parent.name);
+                Debug.Log("Whose root is " + hit.collider.transform.root.name);
 
                 if (GameObject.ReferenceEquals(hit.collider.transform.root.gameObject, this.deleteOnlyChildrenOf)) {
-                    Debug.Log("Found a child building!");
-
-                    foreach (Transform child in hit.collider.transform) {
+                    foreach (Transform child in hit.collider.transform.root) {
                         GameObject.Destroy(child.gameObject);
                     }
 
                     Destroy(hit.collider.gameObject);
-                } else {
-                    Debug.Log("Did not find a child building!");
+                    this.permissionToDestroy = false; // only delete one item
                 }
             }
         }
