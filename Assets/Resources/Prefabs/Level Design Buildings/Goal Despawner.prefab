@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1138289713854799100}
   - component: {fileID: 8044066159333679613}
   - component: {fileID: 1680815891817457423}
+  - component: {fileID: 1439804682543324506}
   - component: {fileID: 916184767}
   m_Layer: 0
-  m_Name: Despawner
+  m_Name: Goal Despawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,6 +93,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1439804682543324506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916184766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b09990aa34684509819cdea78224640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &916184767
 MonoBehaviour:
   m_ObjectHideFlags: 0

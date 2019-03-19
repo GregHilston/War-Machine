@@ -214,7 +214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2135a694998e4674986e034a1c0e3d8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
   armParent: {fileID: 9005341524384485712}
 --- !u!1 &9005341523748919362
 GameObject:
@@ -349,6 +348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9005341524384485712}
   - component: {fileID: 9005341524384485715}
+  - component: {fileID: 9204770939367761631}
   m_Layer: 0
   m_Name: Arm
   m_TagString: Untagged
@@ -392,3 +392,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9204770939367761631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9005341524384485718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b09990aa34684509819cdea78224640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
