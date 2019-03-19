@@ -1,0 +1,8 @@
+{
+	"name": "Level 1",
+	"description": "Simply get five Boxes from the spawn point to the blue Goal tile.",
+	"win": [{
+		"Box": 5
+	}],
+	"lose": []
+}
