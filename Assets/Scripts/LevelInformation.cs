@@ -11,4 +11,10 @@ public class LevelInformation : MonoBehaviour {
     private TextMeshPro goodItems;
     [SerializeField]
     private TextMeshPro badItems;
+
+    public void UpdateDisplayUI(LevelData levelData) {
+        levelName.text = levelData.LevelName;
+        levelDescription.text = levelData.Description;
+    }
+
 }

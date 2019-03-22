@@ -29,6 +29,30 @@ public class LevelData : ScriptableObject {
     [Tooltip("The items needed to lose the level.")]
     private List<Item> badItems = new List<Item>();
 
+    public string LevelName {
+        get {
+            return this.levelName;
+        }
+    }
+
+    public string Description {
+        get {
+            return this.description;
+        }
+    }
+
+    public List<Item> GoodItems {
+        get {
+            return this.goodItems;
+        }
+    }
+
+    public List<Item> BadItems {
+        get {
+            return this.badItems;
+        }
+    }
+
     public override string ToString() {
         return this.levelName + ": " + this.description;
     }

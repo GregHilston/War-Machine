@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 public class LevelProgress : MonoBehaviour {
     [SerializeField]
     private LevelData[] levelData;
+    [SerializeField]
+    private GameEvent onLevelLoaded;
 
     // Start is called before the first frame update
     void Start() {
@@ -18,6 +20,8 @@ public class LevelProgress : MonoBehaviour {
 
         if (levelData != null) {
             print(levelData);
+
+            onLevelLoaded.Raise();
         }
     }
 
