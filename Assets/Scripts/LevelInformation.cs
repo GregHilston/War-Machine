@@ -5,13 +5,13 @@ using TMPro;
 
 public class LevelInformation : MonoBehaviour {
     [SerializeField]
-    private TextMeshPro levelName;
+    private TextMeshProUGUI levelName;
     [SerializeField]
-    private TextMeshPro levelDescription;
+    private TextMeshProUGUI levelDescription;
     [SerializeField]
-    private TextMeshPro goodItems;
+    private TextMeshProUGUI goodItems;
     [SerializeField]
-    private TextMeshPro badItems;
+    private TextMeshProUGUI badItems;
 
     public string ItemListToString(List<LevelData.Item> items) {
         string s = "";
