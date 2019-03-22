@@ -12,11 +12,15 @@ public class LevelProgress : MonoBehaviour {
     [SerializeField]
     private GameEvent onLevelLoaded;
 
-    // Start is called before the first frame update
-    void Start() {
+    int SceneNameToIndex() {
         print("Attempting to load " + SceneManager.GetActiveScene().name + "'s respective ScriptableObject");
 
-        LevelData levelData = this.levelData[0]; // TODO unhard code the 0th index
+        return int.Parse(SceneManager.GetActiveScene().name.Split('_')[1]) - 1; // To convert 1 based to 0 based
+    }
+
+    // Start is called before the first frame update
+    void Start() {
+        LevelData levelData = this.levelData[this.SceneNameToIndex()];
 
         if (levelData != null) {
             print(levelData);
