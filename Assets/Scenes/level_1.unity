@@ -834,6 +834,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3979584ad19c04e208c40ca36754d700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelData:
+  - {fileID: 11400000, guid: f7e15debdc28244c8941490c26135f8e, type: 2}
 --- !u!4 &705208877
 Transform:
   m_ObjectHideFlags: 0
@@ -2025,12 +2027,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoxSpawner Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 5786098164399816306, guid: 8ab7515fb9e4de34ebede372cf458285,
-        type: 3}
-      propertyPath: objectToSpawn
-      value: 
-      objectReference: {fileID: 1524839502340373190, guid: 8f7ddd0ee6ef340a2820c4e175c5922f,
-        type: 3}
     - target: {fileID: 1977016235626490188, guid: 8ab7515fb9e4de34ebede372cf458285,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2086,6 +2082,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5786098164399816306, guid: 8ab7515fb9e4de34ebede372cf458285,
+        type: 3}
+      propertyPath: objectToSpawn
+      value: 
+      objectReference: {fileID: 1524839502340373190, guid: 8f7ddd0ee6ef340a2820c4e175c5922f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ab7515fb9e4de34ebede372cf458285, type: 3}
 --- !u!1 &1699913448

@@ -7,27 +7,17 @@ using UnityEngine.SceneManagement;
 ///  Keeps track at how close the player is to winning or losing a level.
 /// </summary>
 public class LevelProgress : MonoBehaviour {
-    [System.Serializable]
-    private class Progress {
-        public string name;
-        // public string description;
-        // public IDictionary<string, int> win = new Dictionary<string, int>();
-        // public IDictionary<string, int> lose = new Dictionary<string, int>();
-    }
+    [SerializeField]
+    private LevelData[] levelData;
 
     // Start is called before the first frame update
     void Start() {
-        string jsonFileName = SceneManager.GetActiveScene().name + ".json";
-        string jsonFilePath = "Level_Rules/" + jsonFileName;
+        print("Attempting to load " + SceneManager.GetActiveScene().name + "'s respective ScriptableObject");
 
-        print("Attempting to load " + jsonFilePath);
+        LevelData levelData = this.levelData[0]; // TODO unhard code the 0th index
 
-        Object jsonFile = Resources.Load(jsonFilePath);
-        
-        if (jsonFile != null) {
-            // Progress progress = JsonUtility.FromJson<Progress>(jsonFile.text);
-            // print(progress.name); // will print 'Steve'
-            print(SceneManager.GetActiveScene().name);
+        if (levelData != null) {
+            print(levelData);
         }
     }
 
