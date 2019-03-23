@@ -32,7 +32,7 @@ public class ChildDestroyer : MonoBehaviour, IKeyCodeEventRespondable {
                 Debug.Log("Whose root is " + hit.collider.transform.root.name);
                 Debug.Log("Whose prefabParentPointer is " + prefabParentPointer);
 
-                if (prefabParentPointer != null) {
+                if (prefabParentPointer != null && hit.collider.transform.root.transform.name == this.deleteOnlyChildrenOf.transform.name) {
                     Destroy(prefabParentPointer.gameObject);
                     this.permissionToDestroy = false; // only delete one item
                 }
