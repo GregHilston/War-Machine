@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(GameMenuable))]
 [RequireComponent(typeof(Pausable))]
@@ -35,6 +36,18 @@ public class GameMenuController : MonoBehaviour, IKeyCodeEventRespondable {
                 gameMenuable.HideGameMenu();
             }
         }
+    }
+
+    public void NextLevel() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void MainMenu() {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Exit() {
+        Application.Quit();
     }
 
     public bool respoundToKeyCodeEvent(KeyCode keyCode, KeyEvent keyEvent) {
