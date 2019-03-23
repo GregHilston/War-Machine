@@ -995,9 +995,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3979584ad19c04e208c40ca36754d700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelData:
+  allLevelData:
   - {fileID: 11400000, guid: f7e15debdc28244c8941490c26135f8e, type: 2}
-  onLevelLoaded: {fileID: 11400000, guid: 755d9a1a05294b64b84fbb4a49187f52, type: 2}
+  onLevelLoadedEvent: {fileID: 11400000, guid: 755d9a1a05294b64b84fbb4a49187f52, type: 2}
+  onProgressUpdated: {fileID: 11400000, guid: b8cb68709f8808849b92eebad6ee8b38, type: 2}
 --- !u!4 &705208877
 Transform:
   m_ObjectHideFlags: 0
@@ -2441,6 +2442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1653706851}
   - component: {fileID: 1653706852}
+  - component: {fileID: 1653706855}
   - component: {fileID: 1653706853}
   - component: {fileID: 1653706854}
   m_Layer: 5
@@ -2519,6 +2521,7 @@ MonoBehaviour:
   levelDescription: {fileID: 770000232}
   goodItems: {fileID: 803538164}
   badItems: {fileID: 1854241616}
+  levelProgress: {fileID: 705208876}
 --- !u!114 &1653706854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2542,6 +2545,35 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
+--- !u!114 &1653706855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653706850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eae2fc98529a39443bb29b9396e08949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: b8cb68709f8808849b92eebad6ee8b38, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1653706850}
+        m_MethodName: 
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1673419385
 GameObject:
   m_ObjectHideFlags: 0
@@ -2629,7 +2661,7 @@ PrefabInstance:
     - target: {fileID: 1977016235626490188, guid: 8ab7515fb9e4de34ebede372cf458285,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1977016235626490188, guid: 8ab7515fb9e4de34ebede372cf458285,
         type: 3}

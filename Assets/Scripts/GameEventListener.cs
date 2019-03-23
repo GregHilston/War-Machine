@@ -6,7 +6,7 @@ public class GameEventListener : MonoBehaviour {
     [Tooltip("Which game event to listen for.")]
     private GameEvent gameEvent;
     [SerializeField]
-    [Tooltip("Which game event to fire off when we hear what we're listening for.")]
+    [Tooltip("Which method to call when we hear what we're listening for.")]
     private UnityEvent response;
 
     private void OnEnable()  {

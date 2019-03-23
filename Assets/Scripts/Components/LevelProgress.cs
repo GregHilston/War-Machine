@@ -8,25 +8,54 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class LevelProgress : MonoBehaviour {
     [SerializeField]
-    private LevelData[] levelData;
+    [Tooltip("All the levels that we can play in the game")]
+    private LevelData[] allLevelData;
     [SerializeField]
-    private GameEvent onLevelLoaded;
+    [Tooltip("What event to raise when we load a level")]
+    private GameEvent onLevelLoadedEvent;
+    [SerializeField]
+    [Tooltip("Initial or some progress has been made in game.")]
+    private GameEvent onProgressUpdated;
+    private LevelData currentLevelData;
+    public Dictionary<string, int> initialGoodItems = new Dictionary<string, int>();
+    public Dictionary<string, int> initialBadItems = new Dictionary<string, int>();
+    public Dictionary<string, int> liveGoodItems = new Dictionary<string, int>();
+    public Dictionary<string, int> liveBadItems = new Dictionary<string, int>();
 
     int SceneNameToIndex() {
-        print("Attempting to load " + SceneManager.GetActiveScene().name + "'s respective ScriptableObject");
+        int index = int.Parse(SceneManager.GetActiveScene().name.Split('_')[1]) - 1; // To convert 1 based to 0 based
 
-        return int.Parse(SceneManager.GetActiveScene().name.Split('_')[1]) - 1; // To convert 1 based to 0 based
+        print("Attempting to load " + SceneManager.GetActiveScene().name + "'s respective ScriptableObject at index " + index);
+
+        return index;
+    }
+
+    void InitializeLiveData() {
+        this.initialGoodItems = LevelInformation.ItemListToDictionary(this.currentLevelData.GoodItems);
+        this.initialBadItems = LevelInformation.ItemListToDictionary(this.currentLevelData.BadItems);
+
+        foreach (KeyValuePair<string, int> entry in this.initialGoodItems) {
+            this.liveGoodItems.Add(entry.Key, 0);
+        }
+
+        foreach (KeyValuePair<string, int> entry in this.initialBadItems) {
+            this.liveBadItems.Add(entry.Key, 0);
+        }
     }
 
     // Start is called before the first frame update
     void Start() {
-        LevelData levelData = this.levelData[this.SceneNameToIndex()];
+        this.currentLevelData = this.allLevelData[this.SceneNameToIndex()];
 
-        if (levelData != null) {
-            print(levelData);
+        if (this.currentLevelData != null) {
+            print(this.currentLevelData);
 
-            onLevelLoaded.Raise();
+            onLevelLoadedEvent.Raise();
         }
+
+        this.InitializeLiveData();
+
+        onProgressUpdated.Raise();
     }
 
     // Update is called once per frame
