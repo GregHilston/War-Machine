@@ -1,5 +1,7 @@
 # War Machine
 
+![](Gifs/main_menu_trimmed.gif)
+
 War Machine is a small game which challenges the player to use different buildings to beat each level. Levels are designed so the player can win in many different ways, allowing them to exercise creativity. Each level has a list of items that need to make it to Goal Platforms (blue squares) to pass and a list of items that if they touch a Trash Despawner (black square), they'll fail the level.
 
 I had a few goals I had in mind when I started this project. I wanted to:
