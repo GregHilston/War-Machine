@@ -28,6 +28,9 @@ public class LevelData : ScriptableObject {
     [SerializeField]
     [Tooltip("The items needed to lose the level.")]
     private List<Item> badItems = new List<Item>();
+    [SerializeField]
+    [Tooltip("Player buildings not allowed on this level")]
+    private List<GameObject> bannedPlayerBuildings = new List<GameObject>();
 
     public string LevelName {
         get {
@@ -50,6 +53,12 @@ public class LevelData : ScriptableObject {
     public List<Item> BadItems {
         get {
             return this.badItems;
+        }
+    }
+
+    public List<GameObject> BannedPlayerBuildings {
+        get {
+            return this.bannedPlayerBuildings;
         }
     }
 

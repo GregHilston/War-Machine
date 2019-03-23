@@ -1899,6 +1899,7 @@ MonoBehaviour:
   filePath: Assets/Resources/Prefabs/Player Buildings
   fileEndingsToIgnore: .meta
   fileEndingToRemove: .prefab
+  levelData: {fileID: 11400000, guid: eda6778bac3a2db42888398791a8f384, type: 2}
 --- !u!4 &914708467
 Transform:
   m_ObjectHideFlags: 0

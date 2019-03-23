@@ -18,3 +18,5 @@ MonoBehaviour:
   - name: Box
     amount: 5
   badItems: []
+  bannedPlayerBuildings:
+  - {fileID: 5549287773667657060, guid: fd6601a302d87427891d8ec97bcfe443, type: 3}

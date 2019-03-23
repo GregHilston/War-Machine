@@ -30,6 +30,9 @@ public class DynamicButtonCreator : MonoBehaviour {
     private List<GameObject> childButtons = new List<GameObject>();
     private float buttonHeight = 30.0f;
     private BuildingPlacer buildingPlacer;
+    [SerializeField]
+    [Tooltip("Level data so we can extract banned player buildings")]
+    LevelData levelData;
 
     private void fetchPlayerBuildingPrefabs() {
         DirectoryInfo dir = new DirectoryInfo(filePath);
@@ -37,6 +40,13 @@ public class DynamicButtonCreator : MonoBehaviour {
         foreach (FileInfo f in info) {
             if (!f.Name.EndsWith(this.fileEndingsToIgnore)) {
                 this.playerBuildingPrefabs.Add(f.Name.Split(new[] { this.fileEndingToRemove }, StringSplitOptions.None)[0]);
+            }
+        }
+
+        // Disables any buildings dictated by level
+        if (levelData != null) {
+            foreach (GameObject gameObject in this.levelData.BannedPlayerBuildings) {
+                this.playerBuildingPrefabs.Remove(gameObject.transform.name);
             }
         }
     }
