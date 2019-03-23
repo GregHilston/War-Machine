@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d80510c8c68414b84bc2accf467681b8, type: 3}
-  m_Name: Level_3
+  m_Name: Level_4
   m_EditorClassIdentifier: 
-  levelName: Level 3
-  description: Mind the gap. (Conveyors are disabled for this challenge, good luck!)
+  levelName: Level 4
+  description: These Boxes are on their way to the wrong destination!
   goodItems:
   - name: Box
     amount: 5
-  badItems: []
-  bannedPlayerBuildings:
-  - {fileID: 5549287773667657060, guid: fd6601a302d87427891d8ec97bcfe443, type: 3}
+  badItems:
+  - name: Box
+    amount: 1
+  bannedPlayerBuildings: []

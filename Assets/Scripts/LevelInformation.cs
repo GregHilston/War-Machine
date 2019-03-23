@@ -56,7 +56,7 @@ public class LevelInformation : MonoBehaviour {
         badItems.text = "Fail Level: ";
 
         foreach (KeyValuePair<string, int> entry in this.levelProgress.initialBadItems) {
-            badItems.text += "\n\t" + this.levelProgress.liveBadItems[entry.Key] + " of " + this.levelProgress.liveBadItems[entry.Key] + " " + entry.Key;
+            badItems.text += "\n\t" + this.levelProgress.liveBadItems[entry.Key] + " of " + this.levelProgress.initialBadItems[entry.Key] + " " + entry.Key;
         }
     }
 }
