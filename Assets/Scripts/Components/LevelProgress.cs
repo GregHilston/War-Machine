@@ -16,6 +16,9 @@ public class LevelProgress : MonoBehaviour {
     [SerializeField]
     [Tooltip("Initial or some progress has been made in game.")]
     private GameEvent onProgressUpdatedGameEvent;
+    [SerializeField]
+    [Tooltip("Refence to who can control showing and hiding menus.")]
+    private GameMenuController gameMenuController;
     private LevelData currentLevelData;
     public Dictionary<string, int> initialGoodItems = new Dictionary<string, int>();
     public Dictionary<string, int> initialBadItems = new Dictionary<string, int>();
@@ -99,6 +102,7 @@ public class LevelProgress : MonoBehaviour {
 
         if (this.HasWonLevel()) {
             Debug.Log("WON!");
+            this.gameMenuController.ShowGameWonMenu();
         } else if (this.HasLostLevel()) {
             Debug.Log("LOST!");
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(GameMenuable))]
+[RequireComponent(typeof(ShowHideGameObjectAble))]
 [RequireComponent(typeof(Pausable))]
 public class GameMenuController : MonoBehaviour, IKeyCodeEventRespondable {
     [SerializeField]
@@ -28,14 +28,37 @@ public class GameMenuController : MonoBehaviour, IKeyCodeEventRespondable {
             }
         }
 
-        var gameMenuable = GetComponent<GameMenuable>();
+        var gameMenuable = GetComponent<ShowHideGameObjectAble>();
         if (gameMenuable != null) {
             if (this.isGameMenuBeingShown) {
-                gameMenuable.ShowGameMenu();
+                gameMenuable.ShowParent();
             } else {
-                gameMenuable.HideGameMenu();
+                gameMenuable.HideParent();
             }
         }
+    }
+
+    public void ShowGameWonMenu() {
+        // Hide game menu if it was being displayed when we won
+        var gameMenuable = GetComponent<ShowHideGameObjectAble>();
+        if (gameMenuable != null) {
+            gameMenuable.HideParent();
+
+        }
+
+        // Don't want to be able to show more than one menu at once
+        UserInputEventRouter.deregisterKeyboardResponder(this.gameMenuKeyCode, KeyEvent.Down, this);
+
+        // Display win menu if it was being displayed when we won
+        var winMenuable = GetComponents<ShowHideGameObjectAble>()[1];
+        if (winMenuable != null) {
+            winMenuable.ShowParent();
+
+        }
+    }
+
+    public void RestartCurrentLevel() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void NextLevel() {
