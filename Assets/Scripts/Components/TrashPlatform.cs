@@ -10,7 +10,9 @@ public class TrashPlatform : MonoBehaviour {
     private void OnCollisionEnter(Collision collision) {
         var despawnable = collision.gameObject.GetComponent<Despawnable>();
         if (despawnable != null) {
-            this.levelProgress.HandleDespawn(collision.gameObject, Despawnable.TypeOfDespawn.Angrily);
+            if (levelProgress) {
+                this.levelProgress.HandleDespawn(collision.gameObject, Despawnable.TypeOfDespawn.Angrily);
+            }
 
             despawnable.AngrilyDespawn();
         }

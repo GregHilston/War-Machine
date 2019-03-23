@@ -854,6 +854,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 8838083474624753786, guid: 91bfd130a140c4767a81f49ffd371b45,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838083474624753786, guid: 91bfd130a140c4767a81f49ffd371b45,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.45
+      objectReference: {fileID: 0}
     - target: {fileID: 9200546853074833855, guid: 91bfd130a140c4767a81f49ffd371b45,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1882,6 +1892,7 @@ MonoBehaviour:
   filePath: Assets/Resources/Prefabs/Player Buildings
   fileEndingsToIgnore: .meta
   fileEndingToRemove: .prefab
+  levelData: {fileID: 0}
 --- !u!4 &914708467
 Transform:
   m_ObjectHideFlags: 0
@@ -2689,6 +2700,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goal Despawner
       objectReference: {fileID: 0}
+    - target: {fileID: 916184767, guid: 9285182c873613241b7d03b0eae55797, type: 3}
+      propertyPath: levelProgress
+      value: 
+      objectReference: {fileID: 705208876}
     - target: {fileID: 5863804894693978397, guid: 9285182c873613241b7d03b0eae55797,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2744,10 +2759,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 916184767, guid: 9285182c873613241b7d03b0eae55797, type: 3}
-      propertyPath: levelProgress
-      value: 
-      objectReference: {fileID: 705208876}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9285182c873613241b7d03b0eae55797, type: 3}
 --- !u!1 &1598859125
@@ -3339,6 +3350,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoxSpawner Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5786098164399816306, guid: 8ab7515fb9e4de34ebede372cf458285,
+        type: 3}
+      propertyPath: levelInformation
+      value: 
+      objectReference: {fileID: 1653706853}
     - target: {fileID: 1977016235626490188, guid: 8ab7515fb9e4de34ebede372cf458285,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3394,11 +3410,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5786098164399816306, guid: 8ab7515fb9e4de34ebede372cf458285,
-        type: 3}
-      propertyPath: levelInformation
-      value: 
-      objectReference: {fileID: 1653706853}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ab7515fb9e4de34ebede372cf458285, type: 3}
 --- !u!1 &1699913448
