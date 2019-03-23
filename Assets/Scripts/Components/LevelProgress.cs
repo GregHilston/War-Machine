@@ -93,7 +93,7 @@ public class LevelProgress : MonoBehaviour {
             Debug.Log("WON!");
             this.gameMenuController.ShowGameWonMenu();
         } else if (this.HasLostLevel()) {
-            Debug.Log("LOST!");
+            this.gameMenuController.ShowGameLostMenu();
         }
 
         onProgressUpdatedGameEvent.Raise();

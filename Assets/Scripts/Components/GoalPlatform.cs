@@ -15,7 +15,6 @@ public class GoalPlatform : MonoBehaviour {
         var despawnable = collision.gameObject.GetComponent<Despawnable>();
 
         if (despawnable != null) {
-
             this.levelProgress.HandleDespawn(collision.gameObject, Despawnable.TypeOfDespawn.Happily);
 
             despawnable.HappilyDespawn();

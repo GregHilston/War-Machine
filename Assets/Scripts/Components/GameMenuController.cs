@@ -57,6 +57,24 @@ public class GameMenuController : MonoBehaviour, IKeyCodeEventRespondable {
         }
     }
 
+    public void ShowGameLostMenu() {
+        // Hide game menu if it was being displayed when we won
+        var gameMenuable = GetComponent<ShowHideGameObjectAble>();
+        if (gameMenuable != null) {
+            gameMenuable.HideParent();
+
+        }
+
+        // Don't want to be able to show more than one menu at once
+        UserInputEventRouter.deregisterKeyboardResponder(this.gameMenuKeyCode, KeyEvent.Down, this);
+
+        // Display win menu if it was being displayed when we won
+        var loseMenuable = GetComponents<ShowHideGameObjectAble>()[2];
+        if (loseMenuable != null) {
+            loseMenuable.ShowParent();
+        }
+    }
+
     public void RestartCurrentLevel() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
