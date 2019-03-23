@@ -45,7 +45,7 @@ public class LevelInformation : MonoBehaviour {
     }
 
     public void UpdateDisplayUIWithLevelProgress() {
-        Debug.Log("UpdateDisplayUIWithLevelProgress");
+        // Debug.Log("UpdateDisplayUIWithLevelProgress");
 
         goodItems.text = "Pass Level: ";
 

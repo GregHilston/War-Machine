@@ -27,28 +27,15 @@ public class ChildDestroyer : MonoBehaviour, IKeyCodeEventRespondable {
             if (Physics.Raycast(ray, out hit, 1000)) {
                 PrefabParentPointer prefabParentPointer = hit.collider.GetComponentInParent(typeof(PrefabParentPointer)) as PrefabParentPointer;
 
-                Debug.Log("Clicked on " + hit.collider.name);
-                Debug.Log("Whose parent is " + hit.collider.transform.parent.name);
-                Debug.Log("Whose root is " + hit.collider.transform.root.name);
-                Debug.Log("Whose prefabParentPointer is " + prefabParentPointer);
+                // Debug.Log("Clicked on " + hit.collider.name);
+                // Debug.Log("Whose parent is " + hit.collider.transform.parent.name);
+                // Debug.Log("Whose root is " + hit.collider.transform.root.name);
+                // Debug.Log("Whose prefabParentPointer is " + prefabParentPointer);
 
                 if (prefabParentPointer != null && hit.collider.transform.root.transform.name == this.deleteOnlyChildrenOf.transform.name) {
                     Destroy(prefabParentPointer.gameObject);
                     this.permissionToDestroy = false; // only delete one item
                 }
-
-                // Remove all child objects
-                //foreach (GameObject child in prefabParentPointer.transform)
-                //Destroy(child.gameObject);
-
-                //if (GameObject.ReferenceEquals(hit.collider.transform.root.gameObject, this.deleteOnlyChildrenOf)) {
-                //    foreach (Transform child in hit.collider.transform.root) {
-                //        GameObject.Destroy(child.gameObject);
-                //    }
-
-                //    Destroy(hit.collider.gameObject);
-                //    this.permissionToDestroy = false; // only delete one item
-                //}
             }
         }
     }

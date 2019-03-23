@@ -25,7 +25,7 @@ public class LevelProgress : MonoBehaviour {
     int SceneNameToIndex() {
         int index = int.Parse(SceneManager.GetActiveScene().name.Split('_')[1]) - 1; // To convert 1 based to 0 based
 
-        print("Attempting to load " + SceneManager.GetActiveScene().name + "'s respective ScriptableObject at index " + index);
+        // print("Attempting to load " + SceneManager.GetActiveScene().name + "'s respective ScriptableObject at index " + index);
 
         return index;
     }
@@ -48,7 +48,7 @@ public class LevelProgress : MonoBehaviour {
         this.currentLevelData = this.allLevelData[this.SceneNameToIndex()];
 
         if (this.currentLevelData != null) {
-            print(this.currentLevelData);
+            // print(this.currentLevelData);
 
             onLevelLoadedEvent.Raise();
         }
@@ -65,7 +65,7 @@ public class LevelProgress : MonoBehaviour {
 
     public void HandleDespawn(GameObject gameObjectAboutToBeDespawned, Despawnable.TypeOfDespawn typeOfDespawn) {
         string nameOfItemDespawned = gameObjectAboutToBeDespawned.transform.name.Split(' ')[0];
-        Debug.Log("HandleDespawn of " + nameOfItemDespawned);
+        // Debug.Log("HandleDespawn of " + nameOfItemDespawned);
 
         if (typeOfDespawn == Despawnable.TypeOfDespawn.Happily) {
             this.liveGoodItems[nameOfItemDespawned] += 1;
