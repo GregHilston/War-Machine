@@ -44,7 +44,9 @@ public class LevelInformation : MonoBehaviour {
         badItems.text = "Fail Level: " + this.ItemListToString(levelData.BadItems);
     }
 
-    public void PotUpdateDisplayUIWithLevelProgress() {
+    public void UpdateDisplayUIWithLevelProgress() {
+        Debug.Log("UpdateDisplayUIWithLevelProgress");
+
         goodItems.text = "Pass Level: ";
 
         foreach(KeyValuePair<string, int> entry in this.levelProgress.initialGoodItems) {

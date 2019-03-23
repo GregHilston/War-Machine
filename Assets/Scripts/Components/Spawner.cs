@@ -8,19 +8,24 @@ using UnityEngine;
 public class Spawner : MonoBehaviour {
     [SerializeField]
     [Tooltip("Which object should Spawner continuously spawn.")]
-    public GameObject objectToSpawn;
+    private Item itemToSpawn;
     [SerializeField]
     [Tooltip("How many seconds should Spawner wait before we start spawning.")]
-    public float startAtSeconds = 0.0f;
+    private float startAtSeconds = 0.0f;
     [SerializeField]
     [Tooltip("How many seconds should Spawner wait before creating another objectToSpawn.")]
-    public float repeatEverySeconds = 1.0f;
+    private float repeatEverySeconds = 1.0f;
+    [SerializeField]
+    [Tooltip("LevelInformation to pass to the Items we spawn")]
+    LevelInformation levelInformation;
 
     void Start() {
         InvokeRepeating("CreateObject", startAtSeconds, repeatEverySeconds);
     }
 
     void CreateObject() {
-        SimplePool.Spawn(objectToSpawn, transform.position, transform.rotation);
+        GameObject objectSpawned = SimplePool.Spawn(itemToSpawn.gameObject, transform.position, transform.rotation);
+
+        itemToSpawn.AddDependency(this.levelInformation);
     }
 }

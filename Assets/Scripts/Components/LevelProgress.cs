@@ -15,7 +15,7 @@ public class LevelProgress : MonoBehaviour {
     private GameEvent onLevelLoadedEvent;
     [SerializeField]
     [Tooltip("Initial or some progress has been made in game.")]
-    private GameEvent onProgressUpdated;
+    private GameEvent onProgressUpdatedGameEvent;
     private LevelData currentLevelData;
     public Dictionary<string, int> initialGoodItems = new Dictionary<string, int>();
     public Dictionary<string, int> initialBadItems = new Dictionary<string, int>();
@@ -55,11 +55,24 @@ public class LevelProgress : MonoBehaviour {
 
         this.InitializeLiveData();
 
-        onProgressUpdated.Raise();
+        onProgressUpdatedGameEvent.Raise();
     }
 
     // Update is called once per frame
     void Update() {
         
+    }
+
+    public void HandleDespawn(GameObject gameObjectAboutToBeDespawned, Despawnable.TypeOfDespawn typeOfDespawn) {
+        string nameOfItemDespawned = gameObjectAboutToBeDespawned.transform.name.Split(' ')[0];
+        Debug.Log("HandleDespawn of " + nameOfItemDespawned);
+
+        if (typeOfDespawn == Despawnable.TypeOfDespawn.Happily) {
+            this.liveGoodItems[nameOfItemDespawned] += 1;
+        } else if (typeOfDespawn == Despawnable.TypeOfDespawn.Angrily) {
+            this.liveBadItems[nameOfItemDespawned] += 1;
+        }
+
+        onProgressUpdatedGameEvent.Raise();
     }
 }
