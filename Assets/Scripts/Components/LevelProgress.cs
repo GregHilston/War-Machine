@@ -28,7 +28,7 @@ public class LevelProgress : MonoBehaviour {
     int SceneNameToIndex() {
         int index = int.Parse(SceneManager.GetActiveScene().name.Split('_')[1]) - 1; // To convert 1 based to 0 based
 
-        // print("Attempting to load " + SceneManager.GetActiveScene().name + "'s respective ScriptableObject at index " + index);
+        print("Attempting to load " + SceneManager.GetActiveScene().name + "'s respective ScriptableObject at index " + index);
 
         return index;
     }

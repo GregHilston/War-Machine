@@ -24,6 +24,8 @@ public class Despawnable : MonoBehaviour {
         int currentCount;
         string originalPrefabName = SimplePool.GetOriginalPrefabName(this.gameObject);
 
+        print("Despawner IncrementCount originalPrefabName " + originalPrefabName);
+
         dictionary.TryGetValue(originalPrefabName, out currentCount);
         dictionary[originalPrefabName] = currentCount + 1;
     }
