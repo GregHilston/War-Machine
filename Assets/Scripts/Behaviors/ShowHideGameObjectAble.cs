@@ -8,12 +8,12 @@ public class ShowHideGameObjectAble : MonoBehaviour {
     private GameObject gameParentObject;
 
     public void ShowParent() {
-        Debug.Log("Showing");
+        // Debug.Log("Showing");
         gameParentObject.SetActive(true);
     }
 
     public void HideParent() {
-        Debug.Log("Hiding");
+        // Debug.Log("Hiding");
         gameParentObject.SetActive(false);
     }
 }

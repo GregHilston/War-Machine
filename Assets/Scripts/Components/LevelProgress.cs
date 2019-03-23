@@ -8,9 +8,6 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class LevelProgress : MonoBehaviour {
     [SerializeField]
-    [Tooltip("All the levels that we can play in the game")]
-    private LevelData[] allLevelData;
-    [SerializeField]
     [Tooltip("What event to raise when we load a level")]
     private GameEvent onLevelLoadedEvent;
     [SerializeField]
@@ -19,19 +16,13 @@ public class LevelProgress : MonoBehaviour {
     [SerializeField]
     [Tooltip("Refence to who can control showing and hiding menus.")]
     private GameMenuController gameMenuController;
+    [SerializeField]
+    [Tooltip("Level we're playing")]
     private LevelData currentLevelData;
     public Dictionary<string, int> initialGoodItems = new Dictionary<string, int>();
     public Dictionary<string, int> initialBadItems = new Dictionary<string, int>();
     public Dictionary<string, int> liveGoodItems = new Dictionary<string, int>();
     public Dictionary<string, int> liveBadItems = new Dictionary<string, int>();
-
-    int SceneNameToIndex() {
-        int index = int.Parse(SceneManager.GetActiveScene().name.Split('_')[1]) - 1; // To convert 1 based to 0 based
-
-        print("Attempting to load " + SceneManager.GetActiveScene().name + "'s respective ScriptableObject at index " + index);
-
-        return index;
-    }
 
     void InitializeLiveData() {
         this.initialGoodItems = LevelInformation.ItemListToDictionary(this.currentLevelData.GoodItems);
@@ -48,8 +39,6 @@ public class LevelProgress : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        this.currentLevelData = this.allLevelData[this.SceneNameToIndex()];
-
         if (this.currentLevelData != null) {
             // print(this.currentLevelData);
 
