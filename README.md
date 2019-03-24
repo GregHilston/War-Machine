@@ -70,12 +70,12 @@ If you're curious, I recorded gifs throughout my development and will show them 
 
 > Demonstrating my dynamically made menu. This is code written to inspect my folder structure and creates buttons dynamically!
 
-![](Gifs/dyanmically_made_menu.gif)
+![](Gifs/dynamically_made_menu.gif)
 
 
 > Playing with procedural materials for the first time. Checkout lava!
 
-![](Gifs/procedural_materials.gif)
+![](Gifs/procedural_materials.jpg)
 
 
 > Got a main menu working! At first it was just going to be text, but having the sample scene I've been using to test everything be playing in the background looks so good!
