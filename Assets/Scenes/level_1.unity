@@ -2190,7 +2190,7 @@ MonoBehaviour:
   buttonPrefab: {fileID: 4701018217650971638, guid: 45e2ef5f9f5134681a7696ca5168ab5e,
     type: 3}
   parentButton: {fileID: 912419929}
-  filePath: Assets/Resources/Prefabs/Player Buildings
+  filePath: Prefabs/Player Buildings
   fileEndingsToIgnore: .meta
   fileEndingToRemove: .prefab
   levelData: {fileID: 0}
@@ -3491,6 +3491,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1179334594}
     m_Modifications:
+    - target: {fileID: 231030844, guid: 9285182c873613241b7d03b0eae55797, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 916184766, guid: 9285182c873613241b7d03b0eae55797, type: 3}
       propertyPath: m_Name
       value: Goal Despawner

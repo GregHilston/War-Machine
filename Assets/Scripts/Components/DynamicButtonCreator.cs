@@ -18,7 +18,7 @@ public class DynamicButtonCreator : MonoBehaviour {
     private GameObject parentButton;
     [SerializeField]
     [Tooltip("Relative folder to look at for content.")]
-    private string filePath = "Assets/Resources/Prefabs/Player Buildings/";
+    private string filePath;
     [SerializeField]
     [Tooltip("We won't build dynamic buttons for files that end in this string.")]
     private string fileEndingsToIgnore = ".meta";
@@ -35,11 +35,11 @@ public class DynamicButtonCreator : MonoBehaviour {
     LevelData levelData;
 
     private void fetchPlayerBuildingPrefabs() {
-        DirectoryInfo dir = new DirectoryInfo(filePath);
-        FileInfo[] info = dir.GetFiles("*.*");
-        foreach (FileInfo f in info) {
-            if (!f.Name.EndsWith(this.fileEndingsToIgnore)) {
-                this.playerBuildingPrefabs.Add(f.Name.Split(new[] { this.fileEndingToRemove }, StringSplitOptions.None)[0]);
+        UnityEngine.Object[] buildings = Resources.LoadAll(filePath);
+   
+        foreach (UnityEngine.Object o in buildings) {
+            if (!o.name.EndsWith(this.fileEndingsToIgnore)) {
+                this.playerBuildingPrefabs.Add(o.name.Split(new[] { this.fileEndingToRemove }, StringSplitOptions.None)[0]);
             }
         }
 
