@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour {
     }
 
     void CreateObject() {
-        GameObject objectSpawned = SimplePool.Spawn(itemToSpawn.gameObject, transform.position, transform.rotation);
+        SimplePool.Spawn(itemToSpawn.gameObject, transform.position, transform.rotation);
 
         itemToSpawn.AddDependency(this.levelInformation);
     }

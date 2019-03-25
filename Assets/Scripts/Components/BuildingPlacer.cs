@@ -21,7 +21,6 @@ public class BuildingPlacer : MonoBehaviour, IKeyCodeEventRespondable {
 
     private Vector3 ConvertMousePositionToCorrectCoordinateSystem(Vector2 mousePosition) {
         RaycastHit hit = RayFromCamera(mousePosition, 1000.0f);
-        var vector3 = new Vector3(hit.point.x, hit.point.y, hit.point.z);
         return hit.point; // Have the cube rest on the ground
     }
 

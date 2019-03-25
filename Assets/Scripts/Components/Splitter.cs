@@ -12,9 +12,6 @@ public class Splitter : MonoBehaviour {
     [SerializeField]
     [Tooltip("Other location where other half the output should go.")]
     private GameObject outputStage2;
-    [SerializeField]
-    [Tooltip("How long should Splitter taker to split a single object.")]
-    private float processTime = 0.0f;
     private bool shouldGoToOutput1 = true; // used to track which output stage to move the object to
 
     private void OnCollisionEnter(Collision collision) {
