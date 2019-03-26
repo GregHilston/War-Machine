@@ -17,16 +17,16 @@ public class LevelProgress : MonoBehaviour {
     [Tooltip("Refence to who can control showing and hiding menus.")]
     private GameMenuController gameMenuController;
     [SerializeField]
-    [Tooltip("Level we're playing")]
-    private LevelData currentLevelData;
+    [Tooltip("Current Level component, that stores what we're playing")]
+    private CurrentLevel currentLevel;
     public Dictionary<string, int> initialGoodItems = new Dictionary<string, int>();
     public Dictionary<string, int> initialBadItems = new Dictionary<string, int>();
     public Dictionary<string, int> liveGoodItems = new Dictionary<string, int>();
     public Dictionary<string, int> liveBadItems = new Dictionary<string, int>();
 
     void InitializeLiveData() {
-        this.initialGoodItems = LevelInformation.ItemListToDictionary(this.currentLevelData.GoodItems);
-        this.initialBadItems = LevelInformation.ItemListToDictionary(this.currentLevelData.BadItems);
+        this.initialGoodItems = LevelInformation.ItemListToDictionary(this.currentLevel.getLevelData.GoodItems);
+        this.initialBadItems = LevelInformation.ItemListToDictionary(this.currentLevel.getLevelData.BadItems);
 
         foreach (KeyValuePair<string, int> entry in this.initialGoodItems) {
             this.liveGoodItems.Add(entry.Key, 0);
@@ -39,7 +39,7 @@ public class LevelProgress : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        if (this.currentLevelData != null) {
+        if (this.currentLevel != null) {
             // print(this.currentLevelData);
 
             onLevelLoadedEvent.Raise();

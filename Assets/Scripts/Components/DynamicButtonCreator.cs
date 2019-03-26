@@ -31,8 +31,8 @@ public class DynamicButtonCreator : MonoBehaviour {
     private float buttonHeight = 30.0f;
     private BuildingPlacer buildingPlacer;
     [SerializeField]
-    [Tooltip("Level data so we can extract banned player buildings")]
-    LevelData levelData;
+    [Tooltip("Current Level component, that stores what we're playing")]
+    private CurrentLevel currentLevel;
 
     private void fetchPlayerBuildingPrefabs() {
         UnityEngine.Object[] buildings = Resources.LoadAll(filePath);
@@ -44,8 +44,8 @@ public class DynamicButtonCreator : MonoBehaviour {
         }
 
         // Disables any buildings dictated by level
-        if (levelData != null) {
-            foreach (GameObject gameObject in this.levelData.BannedPlayerBuildings) {
+        if (this.currentLevel.getLevelData != null) {
+            foreach (GameObject gameObject in this.currentLevel.getLevelData.BannedPlayerBuildings) {
                 this.playerBuildingPrefabs.Remove(gameObject.transform.name);
             }
         }
