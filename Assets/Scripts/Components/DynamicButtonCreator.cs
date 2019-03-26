@@ -16,15 +16,6 @@ public class DynamicButtonCreator : MonoBehaviour {
     [SerializeField]
     [Tooltip("Button to base all children buttons off of.")]
     private GameObject parentButton;
-    [SerializeField]
-    [Tooltip("Relative folder to look at for content.")]
-    private string filePath;
-    [SerializeField]
-    [Tooltip("We won't build dynamic buttons for files that end in this string.")]
-    private string fileEndingsToIgnore = ".meta";
-    [SerializeField]
-    [Tooltip("We will remove this string from the end of the file to make a dynamic button text.")]
-    private string fileEndingToRemove = ".prefab";
     private bool activateChildrenButtons = false;
     private List<BuildingData> allowedPlayerBuildings = new List<BuildingData>();
     private List<GameObject> childButtons = new List<GameObject>();
