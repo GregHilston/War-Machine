@@ -6,7 +6,7 @@ using System;
 /// <summary>
 /// Represents all the data for a level that can be played by a player.
 /// </summary>
-[CreateAssetMenu(fileName = "New LevelData", menuName = "Level Data", order = 51)]
+[CreateAssetMenu(fileName = "New LevelData", menuName = "LevelData", order = 51)]
 public class LevelData : ScriptableObject {
     [System.Serializable]
     public struct Item {
