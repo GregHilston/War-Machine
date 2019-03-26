@@ -19,8 +19,6 @@ public class BuildingData : ScriptableObject {
     [Tooltip("The building that will be placed")]
     private GameObject prefab;
 
-
-
     public string Name {
         get {
             return this.name;
