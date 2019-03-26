@@ -13,10 +13,17 @@ public class Arm : MonoBehaviour {
     private Collider holding;
     private Vector3 previousScale;
     private GameObject lastCollidedWith;
+    /// <summary>
+    /// Dependency: The animator we use to trigger different animation states.
+    /// </summary>
+    private Animator animator; 
+
+    void Awake() {
+        this.animator = armParent.GetComponent<Animator>();
+    }
 
     void Update() {
-        var animator = armParent.GetComponent<Animator>();
-        if (animator != null) {
+        if (this.animator != null) {
             if (holding != null && animator.GetCurrentAnimatorStateInfo(0).IsName("ArmRotated")) {
                 animator.SetBool("CaughtItem", false);
                 holding.transform.parent = null;
@@ -27,8 +34,7 @@ public class Arm : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider col) {
-        var animator = armParent.GetComponent<Animator>();
-        if (animator != null && (animator.GetCurrentAnimatorStateInfo(0).IsName("UnRotated") || animator.GetCurrentAnimatorStateInfo(0).IsName("ArmStill"))) {
+        if (this.animator != null && (animator.GetCurrentAnimatorStateInfo(0).IsName("UnRotated") || animator.GetCurrentAnimatorStateInfo(0).IsName("ArmStill"))) {
             var armable = col.GetComponent<Armable>();
             if (armable != null && holding == null && col.gameObject != lastCollidedWith) {
                 holding = col;
