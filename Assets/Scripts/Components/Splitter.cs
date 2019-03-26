@@ -15,9 +15,9 @@ public class Splitter : MonoBehaviour {
     private bool shouldGoToOutput1 = true; // used to track which output stage to move the object to
 
     private void OnCollisionEnter(Collision collision) {
-        var splittable = collision.gameObject.GetComponent<Splittable>();
+        Splittable splittable = collision.gameObject.GetComponent<Splittable>();
         if (splittable != null) {
-            var teleportable = collision.gameObject.GetComponent<Teleportable>();
+            Teleportable teleportable = collision.gameObject.GetComponent<Teleportable>();
             if (teleportable != null) {
                 if (shouldGoToOutput1) {
                     teleportable.teleportAndZeroOutForce(outputStage1);

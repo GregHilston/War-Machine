@@ -11,8 +11,9 @@ public class Fan : MonoBehaviour {
     private float force = 1000.0f;
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.GetComponent<Launchable>() != null) {
-            collision.gameObject.GetComponent<Launchable>().launch(gameObject.transform.up * -1.0f * force);
+        Launchable launchable = collision.gameObject.GetComponent<Launchable>();
+        if (launchable != null) {
+            launchable.launch(gameObject.transform.up * -1.0f * force);
         }
     }
 }

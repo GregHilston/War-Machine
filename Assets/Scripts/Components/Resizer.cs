@@ -17,12 +17,13 @@ public class Resizer : MonoBehaviour {
     public float processTime = 0.0f;
 
     private void OnCollisionEnter(Collision collision) {
-        var resizeable = collision.gameObject.GetComponent<Resizable>();
+        Resizable resizeable = collision.gameObject.GetComponent<Resizable>();
+
         if (resizeable != null) {
             resizeable.resize(collision.gameObject, scaleMultiplier);
         }
 
-        var teleporter = collision.gameObject.GetComponent<Teleportable>();
+        Teleportable teleporter = collision.gameObject.GetComponent<Teleportable>();
         if (teleporter != null) {
             teleporter.teleportAndZeroOutForce(outputStage);
         }

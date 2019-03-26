@@ -16,7 +16,7 @@ public class Conveyor : MonoBehaviour {
     void OnCollisionStay(Collision collision) {
         var coveyable = collision.gameObject.GetComponent<Conveyable>();
 
-        if (coveyable) {
+        if (coveyable != null) {
             coveyable.convey(this.endpoint.gameObject, speed);
         }
     }

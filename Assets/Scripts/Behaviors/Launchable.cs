@@ -7,10 +7,15 @@ using UnityEngine;
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class Launchable : MonoBehaviour {
+    private Rigidbody rigidBody;
+
+    public void Awake() {
+        this.rigidBody = this.GetComponent<Rigidbody>();
+    }
+
     public void launch(Vector3 force) {
-        var myRigidBody = this.GetComponent<Rigidbody>();
-        if (myRigidBody != null) {
-            myRigidBody.AddForce(force);
+        if (this.rigidBody != null) {
+            this.rigidBody.AddForce(force);
         }
     }
 
