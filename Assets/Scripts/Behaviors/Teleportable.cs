@@ -7,12 +7,17 @@ using UnityEngine;
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class Teleportable : MonoBehaviour {
+    Rigidbody rigidbody;
+
+    public void Awake() {
+        this.rigidbody = this.GetComponent<Rigidbody>();
+    }
+
     private void zeroOutForce() {
-        var myRigidBody = this.GetComponent<Rigidbody>();
-        if (myRigidBody != null) {
+        if (this.rigidbody != null) {
             // zeroring out any forces
-            myRigidBody.velocity = Vector3.zero;
-            myRigidBody.angularVelocity = Vector3.zero;
+            this.rigidbody.velocity = Vector3.zero;
+            this.rigidbody.angularVelocity = Vector3.zero;
         }
     }
 
