@@ -38,7 +38,12 @@ public class DynamicButtonCreator : MonoBehaviour {
             GameObject newButton = Instantiate(this.buttonPrefab) as GameObject;
             newButton.transform.SetParent(this.parentButton.transform, false);
 
-            newButton.GetComponentInChildren<Text>().text = this.allowedPlayerBuildings[i].Name;
+            Text text = newButton.GetComponentInChildren<Text>();
+
+            if (text != null) {
+                text.text = this.allowedPlayerBuildings[i].Name;
+            }
+
             newButton.transform.SetParent(this.parentButton.transform, false);
             int iOneBasedForMultiplication = i + 1;
             newButton.transform.position = new Vector3(
@@ -49,7 +54,11 @@ public class DynamicButtonCreator : MonoBehaviour {
             newButton.SetActive(false); // hidden by default
 
             int tempInt = i; // required so we can increment i without affected this tempInt
-            newButton.GetComponent<Button>().onClick.AddListener(() => BuildABuildingButtonClicked(tempInt));
+            Button button = newButton.GetComponent<Button>();
+
+            if (button != null) {
+                button.onClick.AddListener(() => BuildABuildingButtonClicked(tempInt));
+            }
 
             childButtons.Add(newButton);
         }
@@ -60,7 +69,7 @@ public class DynamicButtonCreator : MonoBehaviour {
         this.fetchPlayerBuildingPrefabs();
         this.addPlayerBuildingPrefabButtonsDeactivated();
     }
-
+   
     public void ToogleActivateChildrenButtons() {
         this.activateChildrenButtons = !this.activateChildrenButtons;
 
