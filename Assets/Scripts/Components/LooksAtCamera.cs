@@ -5,17 +5,19 @@ using TMPro;
 
 [RequireComponent(typeof(TextMeshPro))]
 public class LooksAtCamera : MonoBehaviour {
+    private TextMeshPro textMeshPro;
+
     // Start is called before the first frame update
     void Start() {
-        TextMeshPro textMesh = this.GetComponent<TextMeshPro>();
+        this.textMeshPro = this.GetComponent<TextMeshPro>();
 
-        if (textMesh) {
-            textMesh.transform.position = gameObject.transform.position;
+        if (this.textMeshPro) {
+            this.textMeshPro.transform.position = gameObject.transform.position;
 
             PrefabParentPointer prefabParentPointer = GetComponentInParent<PrefabParentPointer>();
 
             if (prefabParentPointer) {
-                textMesh.text = prefabParentPointer.name;
+                this.textMeshPro.text = prefabParentPointer.name;
             }
         }
     }
