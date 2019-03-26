@@ -16,17 +16,8 @@ public class DynamicButtonCreator : MonoBehaviour {
     [SerializeField]
     [Tooltip("Button to base all children buttons off of.")]
     private GameObject parentButton;
-    [SerializeField]
-    [Tooltip("Relative folder to look at for content.")]
-    private string filePath;
-    [SerializeField]
-    [Tooltip("We won't build dynamic buttons for files that end in this string.")]
-    private string fileEndingsToIgnore = ".meta";
-    [SerializeField]
-    [Tooltip("We will remove this string from the end of the file to make a dynamic button text.")]
-    private string fileEndingToRemove = ".prefab";
     private bool activateChildrenButtons = false;
-    private List<string> playerBuildingPrefabs = new List<string>();
+    private List<BuildingData> allowedPlayerBuildings = new List<BuildingData>();
     private List<GameObject> childButtons = new List<GameObject>();
     private float buttonHeight = 30.0f;
     private BuildingPlacer buildingPlacer;
@@ -35,28 +26,19 @@ public class DynamicButtonCreator : MonoBehaviour {
     private CurrentLevel currentLevel;
 
     private void fetchPlayerBuildingPrefabs() {
-        UnityEngine.Object[] buildings = Resources.LoadAll(filePath);
-   
-        foreach (UnityEngine.Object o in buildings) {
-            if (!o.name.EndsWith(this.fileEndingsToIgnore)) {
-                this.playerBuildingPrefabs.Add(o.name.Split(new[] { this.fileEndingToRemove }, StringSplitOptions.None)[0]);
-            }
-        }
-
-        // Disables any buildings dictated by level
         if (this.currentLevel.getLevelData != null) {
-            foreach (GameObject gameObject in this.currentLevel.getLevelData.BannedPlayerBuildings) {
-                this.playerBuildingPrefabs.Remove(gameObject.transform.name);
+            foreach (BuildingData buildingData in this.currentLevel.getLevelData.AllowedPlayerBuildings) {
+                this.allowedPlayerBuildings.Add(buildingData);
             }
         }
     }
 
     private void addPlayerBuildingPrefabButtonsDeactivated() {
-        for (int i = 0; i < this.playerBuildingPrefabs.Count; i++) {
+        for (int i = 0; i < this.allowedPlayerBuildings.Count; i++) {
             GameObject newButton = Instantiate(this.buttonPrefab) as GameObject;
             newButton.transform.SetParent(this.parentButton.transform, false);
 
-            newButton.GetComponentInChildren<Text>().text = this.playerBuildingPrefabs[i];
+            newButton.GetComponentInChildren<Text>().text = this.allowedPlayerBuildings[i].Name;
             newButton.transform.SetParent(this.parentButton.transform, false);
             int iOneBasedForMultiplication = i + 1;
             newButton.transform.position = new Vector3(
@@ -88,8 +70,6 @@ public class DynamicButtonCreator : MonoBehaviour {
     }
 
     void BuildABuildingButtonClicked(int buttonNo) {
-        string filePath = "Prefabs/Player Buildings/" + this.playerBuildingPrefabs[buttonNo];
-        GameObject buildingToCreate = (GameObject)Resources.Load(filePath);
-        this.buildingPlacer.buildingToCreate = buildingToCreate;
+        this.buildingPlacer.buildingToCreate = this.allowedPlayerBuildings[buttonNo].Prefab;
     }
 }

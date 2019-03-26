@@ -14,20 +14,17 @@ public class Despawnable : MonoBehaviour {
     /// <summary>
     /// Represents all objects that have been happily despawned.
     /// </summary>
-    private static Dictionary<string, int> happyDespawnCount = new Dictionary<string, int>();
+    private static Dictionary<GameObject, int> happyDespawnCount = new Dictionary<GameObject, int>();
     /// <summary>
     /// Represents all objects that have been angerly despawned.
     /// </summary>
-    private static Dictionary<string, int> angryDespawnCount = new Dictionary<string, int>();
+    private static Dictionary<GameObject, int> angryDespawnCount = new Dictionary<GameObject, int>();
 
-    private void IncrementCount(Dictionary<string, int> dictionary) {
+    private void IncrementCount(Dictionary<GameObject, int> dictionary) {
         int currentCount;
-        string originalPrefabName = SimplePool.GetOriginalPrefabName(this.gameObject);
-
-        // print("Despawner IncrementCount originalPrefabName " + originalPrefabName);
-
-        dictionary.TryGetValue(originalPrefabName, out currentCount);
-        dictionary[originalPrefabName] = currentCount + 1;
+        
+        dictionary.TryGetValue(this.gameObject, out currentCount);
+        dictionary[this.gameObject] = currentCount + 1;
     }
 
     public void HappilyDespawn() {

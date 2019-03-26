@@ -6,12 +6,12 @@ using System;
 /// <summary>
 /// Represents all the data for a level that can be played by a player.
 /// </summary>
-[CreateAssetMenu(fileName = "New LevelData", menuName = "Level Data", order = 51)]
+[CreateAssetMenu(fileName = "New LevelData", menuName = "LevelData", order = 51)]
 public class LevelData : ScriptableObject {
     [System.Serializable]
-    public struct Item {
-        public string name;
-        public int amount; 
+    public struct RequiredItemData {
+        public ItemData itemData;
+        public int amount;
     }
 
     [SerializeField]
@@ -24,13 +24,13 @@ public class LevelData : ScriptableObject {
     // Dictionaries by default. See https://docs.unity3d.com/ScriptReference/SerializeField.html
     [SerializeField]
     [Tooltip("The items needed to win the level.")]
-    private List<Item> goodItems = new List<Item>();
+    private List<RequiredItemData> goodItems = new List<RequiredItemData>();
     [SerializeField]
     [Tooltip("The items needed to lose the level.")]
-    private List<Item> badItems = new List<Item>();
+    private List<RequiredItemData> badItems = new List<RequiredItemData>();
     [SerializeField]
-    [Tooltip("Player buildings not allowed on this level")]
-    private List<GameObject> bannedPlayerBuildings = new List<GameObject>();
+    [Tooltip("Player buildings allowed on this level")]
+    private List<BuildingData> allowedPlayerBuildings = new List<BuildingData>();
 
     public string LevelName {
         get {
@@ -44,21 +44,21 @@ public class LevelData : ScriptableObject {
         }
     }
 
-    public List<Item> GoodItems {
+    public List<RequiredItemData> GoodItems {
         get {
             return this.goodItems;
         }
     }
 
-    public List<Item> BadItems {
+    public List<RequiredItemData> BadItems {
         get {
             return this.badItems;
         }
     }
 
-    public List<GameObject> BannedPlayerBuildings {
+    public List<BuildingData> AllowedPlayerBuildings {
         get {
-            return this.bannedPlayerBuildings;
+            return this.allowedPlayerBuildings;
         }
     }
 
