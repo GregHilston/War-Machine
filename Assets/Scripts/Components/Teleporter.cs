@@ -11,8 +11,9 @@ public class Teleporter : MonoBehaviour {
     private GameObject location;
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.GetComponent<Teleportable>() != null) {
-            collision.gameObject.GetComponent<Teleportable>().teleportAndZeroOutForce(location);
+        Teleportable teleportable = collision.gameObject.GetComponent<Teleportable>();
+        if (teleportable != null) {
+            teleportable.teleportAndZeroOutForce(location);
         }
     }
 }
