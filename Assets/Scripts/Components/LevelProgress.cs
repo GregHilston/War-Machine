@@ -80,15 +80,20 @@ public class LevelProgress : MonoBehaviour {
     }
 
     public void HandleDespawn(GameObject gameObjectAboutToBeDespawned, Despawnable.TypeOfDespawn typeOfDespawn) {
-        foreach (KeyValuePair<ItemData, int> entry in this.liveGoodItems) {
-            if (gameObjectAboutToBeDespawned.GetType() == entry.Key.Prefab.GetType()) {
-                this.liveGoodItems[entry.Key] += 1;
+        // A weird way to iterate over a dictionary and make changes, to protect ourselves from an out of sync error
+        // See: https://stackoverflow.com/a/1070795/1983957
+        List<ItemData> keysWhoseValueMayBeModified = new List<ItemData>(this.liveGoodItems.Keys);
+
+        foreach (ItemData itemData in keysWhoseValueMayBeModified) {
+            if (gameObjectAboutToBeDespawned.GetType() == itemData.Prefab.GetType()) {
+                this.liveGoodItems[itemData] += 1;
             }
         }
 
-        foreach (KeyValuePair<ItemData, int> entry in this.liveBadItems) {
-            if (gameObjectAboutToBeDespawned.GetType() == entry.Key.Prefab.GetType()) {
-                this.liveBadItems[entry.Key] += 1;
+        keysWhoseValueMayBeModified = new List<ItemData>(this.liveBadItems.Keys);
+        foreach (ItemData itemData in keysWhoseValueMayBeModified) {
+            if (gameObjectAboutToBeDespawned.GetType() == itemData.Prefab.GetType()) {
+                this.liveBadItems[itemData] += 1;
             }
         }
 
