@@ -18,4 +18,5 @@ MonoBehaviour:
   - itemData: {fileID: 11400000, guid: f3a7fb1d2088b734d9440a0dff42890a, type: 2}
     amount: 5
   badItems: []
-  allowedPlayerBuildings: []
+  allowedPlayerBuildings:
+  - {fileID: 11400000, guid: b2e2850eeb4abe34ba6f5ac74f49af2f, type: 2}
