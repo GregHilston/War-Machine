@@ -19,20 +19,20 @@ public class LevelProgress : MonoBehaviour {
     [SerializeField]
     [Tooltip("Current Level component, that stores what we're playing")]
     private CurrentLevel currentLevel;
-    public Dictionary<string, int> initialGoodItems = new Dictionary<string, int>();
-    public Dictionary<string, int> initialBadItems = new Dictionary<string, int>();
-    public Dictionary<string, int> liveGoodItems = new Dictionary<string, int>();
-    public Dictionary<string, int> liveBadItems = new Dictionary<string, int>();
+    public Dictionary<ItemData, int> initialGoodItems = new Dictionary<ItemData, int>();
+    public Dictionary<ItemData, int> initialBadItems = new Dictionary<ItemData, int>();
+    public Dictionary<ItemData, int> liveGoodItems = new Dictionary<ItemData, int>();
+    public Dictionary<ItemData, int> liveBadItems = new Dictionary<ItemData, int>();
 
     void InitializeLiveData() {
         this.initialGoodItems = LevelInformation.ItemListToDictionary(this.currentLevel.getLevelData.GoodItems);
         this.initialBadItems = LevelInformation.ItemListToDictionary(this.currentLevel.getLevelData.BadItems);
 
-        foreach (KeyValuePair<string, int> entry in this.initialGoodItems) {
+        foreach (KeyValuePair<ItemData, int> entry in this.initialGoodItems) {
             this.liveGoodItems.Add(entry.Key, 0);
         }
 
-        foreach (KeyValuePair<string, int> entry in this.initialBadItems) {
+        foreach (KeyValuePair<ItemData, int> entry in this.initialBadItems) {
             this.liveBadItems.Add(entry.Key, 0);
         }
     }
@@ -56,7 +56,7 @@ public class LevelProgress : MonoBehaviour {
     }
 
     public bool HasWonLevel() {
-        foreach (KeyValuePair<string, int> entry in this.initialGoodItems) {
+        foreach (KeyValuePair<ItemData, int> entry in this.initialGoodItems) {
             if (this.liveGoodItems[entry.Key] < entry.Value) {
                 return false;
             }
@@ -67,7 +67,7 @@ public class LevelProgress : MonoBehaviour {
 
     public bool HasLostLevel() {
         if (this.initialBadItems.Count > 0) {
-            foreach (KeyValuePair<string, int> entry in this.initialBadItems) {
+            foreach (KeyValuePair<ItemData, int> entry in this.initialBadItems) {
                 if (this.liveBadItems[entry.Key] < entry.Value) {
                     return false;
                 }
@@ -80,13 +80,16 @@ public class LevelProgress : MonoBehaviour {
     }
 
     public void HandleDespawn(GameObject gameObjectAboutToBeDespawned, Despawnable.TypeOfDespawn typeOfDespawn) {
-        string nameOfItemDespawned = gameObjectAboutToBeDespawned.transform.name.Split(' ')[0];
-        // Debug.Log("HandleDespawn of " + nameOfItemDespawned);
+        foreach (KeyValuePair<ItemData, int> entry in this.liveGoodItems) {
+            if (gameObjectAboutToBeDespawned.GetType() == entry.Key.Prefab.GetType()) {
+                this.liveGoodItems[entry.Key] += 1;
+            }
+        }
 
-        if (typeOfDespawn == Despawnable.TypeOfDespawn.Happily) {
-            this.liveGoodItems[nameOfItemDespawned] += 1;
-        } else if (typeOfDespawn == Despawnable.TypeOfDespawn.Angrily) {
-            this.liveBadItems[nameOfItemDespawned] += 1;
+        foreach (KeyValuePair<ItemData, int> entry in this.liveBadItems) {
+            if (gameObjectAboutToBeDespawned.GetType() == entry.Key.Prefab.GetType()) {
+                this.liveBadItems[entry.Key] += 1;
+            }
         }
 
         if (this.HasWonLevel()) {

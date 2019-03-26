@@ -16,22 +16,21 @@ public class LevelInformation : MonoBehaviour {
     [Tooltip("Reference to progress in game.")]
     private LevelProgress levelProgress;
 
-    public string ItemListToString(List<LevelData.Item> items) {
+    public string ItemListToString(List<LevelData.RequiredItemData> requiredItemData) {
         string s = "";
 
-        foreach (LevelData.Item item in items) {
-            s += item.amount + " " + item.name + "\n";
+        foreach (LevelData.RequiredItemData item in requiredItemData) {
+            s += item.amount + " " + item.itemData.name + "\n";
         }
 
         return s;
     }
 
-    static public Dictionary<string, int> ItemListToDictionary(List<LevelData.Item> items) {
-        Dictionary<string, int> itemData = new Dictionary<string, int>();
+    static public Dictionary<ItemData, int> ItemListToDictionary(List<LevelData.RequiredItemData> items) {
+        Dictionary<ItemData, int> itemData = new Dictionary<ItemData, int>();
 
-
-        foreach (LevelData.Item item in items) {
-            itemData.Add(item.name, item.amount);
+        foreach (LevelData.RequiredItemData requiredItemData in items) {
+            itemData.Add(requiredItemData.itemData, requiredItemData.amount);
         }
 
         return itemData;
@@ -49,13 +48,13 @@ public class LevelInformation : MonoBehaviour {
 
         goodItems.text = "Pass Level: ";
 
-        foreach(KeyValuePair<string, int> entry in this.levelProgress.initialGoodItems) {
+        foreach(KeyValuePair<ItemData, int> entry in this.levelProgress.initialGoodItems) {
             goodItems.text += "\n\t" + this.levelProgress.liveGoodItems[entry.Key] + " of " + this.levelProgress.initialGoodItems[entry.Key] + " " + entry.Key;
         }
 
         badItems.text = "Fail Level: ";
 
-        foreach (KeyValuePair<string, int> entry in this.levelProgress.initialBadItems) {
+        foreach (KeyValuePair<ItemData, int> entry in this.levelProgress.initialBadItems) {
             badItems.text += "\n\t" + this.levelProgress.liveBadItems[entry.Key] + " of " + this.levelProgress.initialBadItems[entry.Key] + " " + entry.Key;
         }
     }
