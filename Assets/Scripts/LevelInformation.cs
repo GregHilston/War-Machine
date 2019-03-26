@@ -37,11 +37,11 @@ public class LevelInformation : MonoBehaviour {
         return itemData;
     }
 
-    public void UpdateDisplayUI(LevelData levelData) {
-        levelName.text = "Name: " + levelData.LevelName;
-        levelDescription.text = "Description: " + levelData.Description;
-        goodItems.text = "Pass Level: " + this.ItemListToString(levelData.GoodItems);
-        badItems.text = "Fail Level: " + this.ItemListToString(levelData.BadItems);
+    public void UpdateDisplayUI(CurrentLevel currentLevel) {
+        levelName.text = "Name: " + currentLevel.getLevelData.LevelName;
+        levelDescription.text = "Description: " + currentLevel.getLevelData.Description;
+        goodItems.text = "Pass Level: " + this.ItemListToString(currentLevel.getLevelData.GoodItems);
+        badItems.text = "Fail Level: " + this.ItemListToString(currentLevel.getLevelData.BadItems);
     }
 
     public void UpdateDisplayUIWithLevelProgress() {

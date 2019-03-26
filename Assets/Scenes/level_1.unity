@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2237,7 +2237,7 @@ MonoBehaviour:
   filePath: Prefabs/Player Buildings
   fileEndingsToIgnore: .meta
   fileEndingToRemove: .prefab
-  currentLevel: {fileID: 0}
+  currentLevel: {fileID: 474380278}
 --- !u!4 &914708467
 Transform:
   m_ObjectHideFlags: 0
@@ -4077,9 +4077,8 @@ MonoBehaviour:
         m_MethodName: UpdateDisplayUI
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: f7e15debdc28244c8941490c26135f8e,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
+          m_ObjectArgument: {fileID: 474380278}
+          m_ObjectArgumentAssemblyTypeName: CurrentLevel, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
