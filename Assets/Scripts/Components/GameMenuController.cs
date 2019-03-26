@@ -10,6 +10,14 @@ public class GameMenuController : MonoBehaviour, IKeyCodeEventRespondable {
     [Tooltip("Key to press down to show menu")]
     private KeyCode gameMenuKeyCode = KeyCode.Escape;
     private bool isGameMenuBeingShown = false;
+    /// <summary>
+    /// Dependency: The pausable.
+    /// </summary>
+    private Pausable pauseable;
+
+    public void Awake() {
+        this.pauseable = GetComponent<Pausable>();
+    }
 
     public void Start() {
         UserInputEventRouter.registerKeyboardResponder(this.gameMenuKeyCode, KeyEvent.Down, this);
@@ -18,7 +26,6 @@ public class GameMenuController : MonoBehaviour, IKeyCodeEventRespondable {
     private void toggleShowingGameMenuAndPausing() {
         this.isGameMenuBeingShown = !this.isGameMenuBeingShown;
 
-        var pauseable = GetComponent<Pausable>();
         if (pauseable != null) {
             if (this.isGameMenuBeingShown) {
 
