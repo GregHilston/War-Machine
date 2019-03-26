@@ -69,7 +69,6 @@ public class GameMenuController : MonoBehaviour, IKeyCodeEventRespondable {
         var gameMenuable = GetComponent<ShowHideGameObjectAble>();
         if (gameMenuable != null) {
             gameMenuable.HideParent();
-
         }
 
         // Don't want to be able to show more than one menu at once
