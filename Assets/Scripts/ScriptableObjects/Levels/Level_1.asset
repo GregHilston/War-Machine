@@ -15,6 +15,7 @@ MonoBehaviour:
   levelName: Level 1
   description: Most basic level, where you only have to move five boxes
   goodItems:
-  - name: Box
+  - itemData: {fileID: 11400000, guid: f3a7fb1d2088b734d9440a0dff42890a, type: 2}
     amount: 5
   badItems: []
+  allowedPlayerBuildings: []
