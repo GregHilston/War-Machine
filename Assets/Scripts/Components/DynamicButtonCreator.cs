@@ -70,6 +70,8 @@ public class DynamicButtonCreator : MonoBehaviour {
     }
 
     void BuildABuildingButtonClicked(int buttonNo) {
-        this.buildingPlacer.buildingToCreate = this.allowedPlayerBuildings[buttonNo].Prefab;
+        if (this.buildingPlacer != null) {
+            this.buildingPlacer.buildingToCreate = this.allowedPlayerBuildings[buttonNo].Prefab;
+        }
     }
 }
