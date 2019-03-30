@@ -20,7 +20,7 @@ public class Factory : MonoBehaviour {
     private float processTime = 0.0f;
 
     private void OnCollisionEnter(Collision collision) {
-        Factoryable factoryable = collision.gameObject.GetComponent<Factoryable>()
+        Factoryable factoryable = collision.gameObject.GetComponent<Factoryable>();
         if (factoryable != null) {
             if (collision.gameObject.GetType() == input.GetType()) {
                 factoryable.transformOneObjectIntoAnother(factoryable.gameObject, output, outputStage.transform.position, outputStage.transform.rotation, this.processTime);
