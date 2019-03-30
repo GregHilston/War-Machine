@@ -20,7 +20,7 @@ public class ChildDestroyer : MonoBehaviour, IKeyCodeEventRespondable {
     }
 
     void Update() {
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
         if (permissionToDestroy && Input.GetButtonDown("Fire1")) {

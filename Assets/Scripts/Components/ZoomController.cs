@@ -35,7 +35,7 @@ public class ZoomController : MonoBehaviour, IMouseEventRespondable {
         if(System.Math.Abs(Time.timeScale) > epsilon) {
             // Handle zooming in and out
             // From: https://answers.unity.com/questions/218347/how-do-i-make-the-camera-zoom-in-and-out-with-the.html
-            var fov = Camera.main.fieldOfView;
+            float fov = Camera.main.fieldOfView;
             fov += delta * -1 * sensitivity;
             fov = Mathf.Clamp(fov, minFov, maxFov);
             Camera.main.fieldOfView = fov;
